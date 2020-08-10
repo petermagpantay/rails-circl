@@ -1,0 +1,7 @@
+<h1>New Request for the Event: <%= @event.title %></h1>
+
+<%= form_for(@request, url:event_requests_path) do |f| %>
+  <%= f.submit %>
+<% end %>
+
+<p class="btn btn-primary"><%= link_to "Confirm", event_requests_path %></p>
