@@ -1,1 +1,20 @@
 <h1>See all events</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <% @events.each do |event| %>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= event.title %></h5>
+                        <p class="card-text"><%= event.description %></p>
+                        <p class="card-text"><%= event.location %></p>
+                        <p class="card-text"><%= event.event_date %></p>
+                        <p class="card-text"><%= event.event_time %></p>
+                        <p class="btn btn-primary"><%= link_to "See more details", event_path(event) %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
