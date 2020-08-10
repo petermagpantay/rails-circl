@@ -1,2 +1,86 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.header-index {
+    text-align: center;
+    margin: 40px;
+    font-size: $font-size-header;
+    font-family: $header-font;
+}
+
+.con {
+    padding: 0px 80px;
+}
+
+.map-style {
+    box-shadow: $standard-shadow;
+    height: 100vh;
+    position: sticky;
+}
+
+.card-body {
+    padding: 0px;
+}
+
+.card-index {
+    border: none;
+    border-radius: $standard-radius;
+    box-shadow: $standard-shadow;
+    margin-bottom: 24px;
+    text-align: center;
+    padding-bottom: 40px;
+    min-height: 360px;
+    transform: scale(1);
+    transition: $standard-transition;
+    &:hover {
+        transform: scale(1.04);
+    }
+
+    .title-index {
+        text-align: center;
+        font-size: 20px;
+        padding: 0px 8px;
+    }
+
+    .card-img-index {
+        border-radius: $standard-radius $standard-radius 0 0;
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .user-name-index {
+        margin-left: 8px;
+        margin-top: 8px;
+    }
+
+    .user-social-icons {
+        margin-right: -8px;
+        margin-top: 8px;
+        color: $primary-color;
+        i {
+            padding-right: 8px;
+        }
+    }
+
+    .date-index {
+        margin-bottom: 40px;
+    }
+
+    .profile-pic-index {
+        text-align: center;
+        img {
+            margin-left: -8px;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-top: -40px;
+            box-shadow: $standard-shadow;
+        }
+        i {
+            float: right;
+        }
+    }
+    
+}

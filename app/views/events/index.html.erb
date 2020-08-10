@@ -1,20 +1,42 @@
-<h1>See all events</h1>
+<h1 class="header-index">Choose among 1234 activities</h1>
 
-<div class="container">
+<div class="con">
     <div class="row">
         <div class="col-lg-6">
-            <% @events.each do |event| %>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= event.title %></h5>
-                        <p class="card-text"><%= event.description %></p>
-                        <p class="card-text"><%= event.location %></p>
-                        <p class="card-text"><%= event.event_date %></p>
-                        <p class="card-text"><%= event.event_time %></p>
-                        <p class="btn btn-primary"><%= link_to "See more details", event_path(event) %></p>
+            <div class="row">
+                <% @events.each do |event| %>
+                    <div class="col-lg-6">
+                        <div class="card card-index" style="width: 18rem;">
+                            <div class="card-body card-body-index">
+                                <img class="card-img-index" src="https://source.unsplash.com/random" alt="">
+                                <div class="row">
+                                    <div class="col-4 user-name-index">
+                                        <p>Name, 36</p>
+                                    </div>
+                                    <div class="col-4 profile-pic-index">
+                                        <img src="https://source.unsplash.com/user/aiony" alt="">
+                                    </div>
+                                    <div class="col-4 user-social-icons">
+                                        <i class="fab fa-linkedin-in fa-lg"></i>
+                                        <i class="fab fa-twitter fa-lg"></i>
+                                    </div>
+                                </div>
+                                <p class="card-title title-index"><%= event.title %></p>
+                                <p class="card-text date-index"><%= event.event_time %></p>
+                                <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
+                            </div>
+                        </div>
                     </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="map-style">
+                <div id="map"
+                    style="width:52%; height: 800px;"
+                    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
                 </div>
-            <% end %>
+            </div>
         </div>
     </div>
 </div>

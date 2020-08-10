@@ -1,0 +1,14 @@
+.btn-standard {
+    background-color: $primary-color;
+    padding: $button-padding;
+    color: white;
+    border: 1px solid $primary-color;
+    transition: $standard-transition;
+
+    &:hover{
+        border: 1px solid $primary-color;
+        background-color: white;
+        color: $primary-color;
+        text-decoration: none;
+    }
+}

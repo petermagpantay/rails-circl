@@ -12,7 +12,7 @@ puts 'Creating 10 events...'
 10.times do |i|
   event = Event.create!(
     user: User.all.sample,
-    title: Faker::Lorem.question(word_count: 10, supplemental: false),
+    title: Faker::Lorem.question(word_count: 5, supplemental: false),
     description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
     location: Faker::Address.full_address,
     event_date: Faker::Date.between(from: "2020-08-01", to: "2020-12-31"),
