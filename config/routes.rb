@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "pages#home"
 
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show, :edit, :update]
 
   resources :requests, only: [:index, :show, :edit, :update] do
     member do
@@ -14,5 +13,5 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create]
     resources :comments, only: [:new, :create]
   end
-  
+
 end

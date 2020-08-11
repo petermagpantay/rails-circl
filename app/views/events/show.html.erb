@@ -1,4 +1,33 @@
-<h1>Have a look at this awesome event</h1>
+<div class="header-show-page">
+    <div class="row">
+        <div class="col-6 col-md-4 text-show">
+            <p class="show-header"><%= @event.title %></p>
+            <p>You will meet & mingle with</p>
+        </div>
+        <div class="col-sm-6 col-md-8">
+            <% if @event.image.attached?  %>
+                <%= cl_image_tag @event.image.key, class: "card-img-show" %>
+            <% else %>
+                <img class="card-img-show" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
+<%= link_to "Request to join", new_event_request_path(@event), class: "btn-standard" %>
+
+<div class="desc-show-page">
+    <p class="desc-show"><%= @event.description %></p>
+</div>
+
+<div class="map-style-show">
+    <div id="map"
+        style="width:90%; height: 400px;"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+</div>
+
 
 <p class="btn btn-primary"><%= link_to "Back to all events", events_path %></p>
 <p class="btn btn-primary"><%= link_to "Request to join", new_event_request_path(@event) %></p>

@@ -1,10 +1,17 @@
 .navbar-circl {
   justify-content: space-between;
   background: white;
-  padding-right: 120px;
-  padding-left: 120px;
+  position: fixed !important;
+  z-index: 1000;
+  width: 100%;
 }
 
 .navbar-circl .navbar-collapse {
   flex-grow: 0;
 }
+
+// .fixed-content {
+//   position:fixed;
+//   overflow-y:scroll;
+//   overflow-x:hidden;
+// }
