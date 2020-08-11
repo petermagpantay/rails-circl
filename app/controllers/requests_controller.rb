@@ -1,7 +1,8 @@
 class RequestsController < ApplicationController
+
   def index 
-    @requests = Request.all
-  end
+    @requests = policy_scope(Request).order(created_at: :asc)
+   end
 
   def show 
     @request = Request.find(params[:id])
@@ -26,6 +27,6 @@ class RequestsController < ApplicationController
   private 
 
   def request_params
-    params.require(:request).permit()
+    params.require(:request).permit(:status)
   end
 end

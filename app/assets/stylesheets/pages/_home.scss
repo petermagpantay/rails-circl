@@ -84,54 +84,54 @@
   transform: scale(1);
   transition: $standard-transition;
   &:hover {
-      transform: scale(1.04);
+    transform: scale(1.04);
   }
 
   .title-homepage {
-      text-align: center;
-      font-size: 20px;
-      padding: 0px 8px;
+    text-align: center;
+    font-size: 20px;
+    padding: 0px 8px;
   }
 
   .card-img-homepage {
-      border-radius: $standard-radius $standard-radius 0 0;
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
+    border-radius: $standard-radius $standard-radius 0 0;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
   }
 
   .user-name-homepage {
-      margin-left: 8px;
-      margin-top: 8px;
+    margin-left: 8px;
+    margin-top: 8px;
   }
 
   .user-social-icons {
-      margin-right: -8px;
-      margin-top: 8px;
-      color: $primary-color;
-      i {
-          padding-right: 8px;
-      }
+    margin-right: -8px;
+    margin-top: 8px;
+    color: $primary-color;
+    i {
+      padding-right: 8px;
+    }
   }
 
   .date-homepage {
-      margin-bottom: 40px;
+    margin-bottom: 40px;
   }
 
   .profile-pic-homepage {
-      text-align: center;
-      img {
-          margin-left: -8px;
-          border-radius: 50%;
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          margin-top: -40px;
-          box-shadow: $standard-shadow;
-      }
-      i {
-          float: right;
-      }
+    text-align: center;
+    img {
+      margin-left: -8px;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-top: -40px;
+      box-shadow: $standard-shadow;
+    }
+    i {
+      float: right;
+    }
   }
 }
 
@@ -178,7 +178,7 @@
 
 .review-card p {
   font-size: 16px;
-  opacity: .7;
+  opacity: 0.7;
   margin: 0;
   text-align: center;
   padding-bottom: 16px;

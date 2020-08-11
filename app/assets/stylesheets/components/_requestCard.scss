@@ -1,0 +1,59 @@
+.card-request {
+  overflow: hidden;
+  height: 120px;
+  max-width: 30%;
+
+  background: white;
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 16px 0px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-request img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-request h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-request p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-request .card-request-infos {
+  padding: 16px;
+  margin: 0px 0px 0px 16px;
+}
+
+.section_title {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.pending {
+  color: goldenrod;
+}
+
+.accepted {
+  color: green;
+}
+.rejected {
+  color: red;
+}
