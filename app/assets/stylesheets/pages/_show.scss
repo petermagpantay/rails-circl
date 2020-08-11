@@ -1,0 +1,36 @@
+.header-show-page {
+    padding-left: 80px;
+}
+
+.card-img-show {
+    width: 1000px;
+    height: 500px;
+    float: right;
+    object-fit: cover;
+}
+
+.text-show {
+    margin-top: 200px;
+    p {
+        font-size: $font-size-paragraph;
+    }
+    .show-header {
+        font-size: $font-size-header;
+    }
+}
+
+.desc-show {
+    margin-top: 40px;
+    padding: 0px 80px;
+    font-size: $font-size-subheader;
+}
+
+.btn-show {
+    margin-right: 16px;
+    margin-left: 80px;
+}
+
+.map-style-show {
+    text-align: center;
+    margin: 0 auto;
+}

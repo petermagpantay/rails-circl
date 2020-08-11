@@ -33,6 +33,7 @@ gem 'devise'
 gem 'pundit'
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'cloudinary', '~> 1.12.0'
 
 
 gem 'autoprefixer-rails'
