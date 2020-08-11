@@ -1,0 +1,51 @@
+.signup-title {
+  text-align: center;
+  margin: 40px 0px;
+}
+
+form {
+  text-align: center;
+
+  label {
+      display: none;
+  }
+}
+
+.form-inputs .form-control{
+  border: 1px solid $primary-color;
+  width: 300px;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: $button-padding;
+  text-align: center;
+}
+
+.form-actions {
+  .btn {
+      background-color: $primary-color;
+      color: white;
+      border-radius: $hard-radius;
+      padding: $button-padding;
+      box-shadow: 0px 0px 10px rgba(211, 211, 211, 0.5);
+  }
+
+  &:hover .btn {
+      transition: $standard-transition;
+      background-color: $secondary-color;
+  }
+}
+
+.login {
+  text-align: center;
+  margin-top: 16px;
+  color: rgb(136, 136, 136);
+
+  a {
+      color: $primary-color;
+      text-decoration: none;
+      &:hover {
+          transition: $standard-transition;
+          color: $secondary-color;
+      }
+  }
+}

@@ -45,6 +45,7 @@
   padding-bottom: 64px;
   padding-left: 120px;
   padding-right: 120px;
+  background: rgba(196, 196, 196, 0.49);
   h2 {
     padding-bottom: 72px;
   }
@@ -153,6 +154,11 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transform: scale(1);
+  transition: $standard-transition;
+  &:hover {
+    transform: scale(1.04);
+  }
 }
 
 .avatar-large {
