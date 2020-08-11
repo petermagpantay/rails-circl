@@ -1,10 +1,14 @@
 <div class="profile_body">
   <%=link_to "Back" %>
   <h1><%= @profile.first_name %>'s Profile</h1>
+  <% if @profile.image.attached? %>
+    <%= cl_image_tag @profile.image.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <p><strong>First Name:</strong> <%= @profile.first_name %></p>
   <p><strong>Last Name:</strong> <%= @profile.last_name %></p>
   <p><strong>Age:</strong> <%= @profile.age %></p>
   <p><strong>Bio:</strong> <%= @profile.bio %></p>
+
   <% if policy(@profile).edit? %>
     <%= link_to "Edit my Profile", edit_user_registration_path(@profile) %><%#Here we have to insert the edit link%>
   <% end %>
