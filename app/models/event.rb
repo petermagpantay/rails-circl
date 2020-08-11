@@ -4,9 +4,8 @@ class Event < ApplicationRecord
   has_many :comments
   has_one_attached :image
 
-  validates :title, presence: true, length: { minimum: 10 }
-  validates :description, presence: true, length: { minimum: 30 }
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :description, presence: true, length: { minimum: 5 }
   validates :event_date, presence: true
-  validates :event_time, presence: true
   # validates :location, presence: true
 end
