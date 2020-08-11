@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create]
     resources :comments, only: [:new, :create]
   end
+  
 end
