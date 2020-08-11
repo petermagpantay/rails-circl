@@ -3,9 +3,10 @@
     <div class="col-6 col-md-4 text-show">
       <p class="show-header"><%= @event.title %></p>
       <p>You will meet & mingle with</p>
-
-      <p> Event."owner" =  <%=  @event.user.user_name %>.avatar</p>
-      <%= raise %>
+      <p>host: <%=  @event.user.user_name %> </p>
+      <p>invited : <% @accepted.each do |user| %>
+          <%= user.user_name %>
+        <% end %></p>
     </div>
     <div class="col-sm-6 col-md-8">
       <% if @event.image.attached?  %>

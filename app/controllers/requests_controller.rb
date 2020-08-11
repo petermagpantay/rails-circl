@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 
   def index 
-    @requests = policy_scope(Request).order(created_at: :asc)
+    @requests = policy_scope(Request).order(created_at: :desc)
    end
 
   def show 
