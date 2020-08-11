@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>List of request !</h1>
+  <% @requests.each do |request| %>
+    <div class="cards">
+      <div class="card-request">
+        <img src="https://source.unsplash.com/random/512x512" />
+        <div class="card-request-infos">
+          <p> Request no.<%= request.id%></p>
+          <%= link_to request.event.title, event_path(request.event_id) %>
+          <p>Event description¿?</p>
+          <p class="">Status: <%= link_to request.status, "" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
