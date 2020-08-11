@@ -1,16 +1,193 @@
 // Specific CSS for your home-page
 
-//banner img
+// footer fix?
+// .container {
+//   min-height: calc(100vh - 86px);
+// }
 
-.banner-img {
-  position: absolute;
-  width: 884px;
-  height: 418px;
-  left: 556px;
-  top: 82px;
+// banner section
+.banner-homepage-left {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 120px;
+  padding-right: 120px;
+  background-color: white;
+  h2 {
+    padding-bottom: 72px;
+  }
 }
 
-// Responsive pages
+.banner-homepage-right {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-right: 120px;
+  background-color: white;
+}
+
+.main-banner-img {
+  width: 100%;
+}
+
+// activities section
+.activities-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 120px;
+  padding-right: 120px;
+  h2 {
+    padding-bottom: 72px;
+  }
+}
+
+.homepage-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.header-homepage {
+  text-align: center;
+  margin: 40px;
+  font-size: $font-size-header;
+  font-family: $header-font;
+}
+
+.con {
+  padding: 0px 80px;
+}
+
+.card-body {
+  padding: 0px;
+}
+
+.card-homepage {
+  border: none;
+  border-radius: $standard-radius;
+  box-shadow: $standard-shadow;
+  margin-bottom: 24px;
+  text-align: center;
+  padding-bottom: 40px;
+  min-height: 360px;
+  transform: scale(1);
+  transition: $standard-transition;
+  &:hover {
+      transform: scale(1.04);
+  }
+
+  .title-homepage {
+      text-align: center;
+      font-size: 20px;
+      padding: 0px 8px;
+  }
+
+  .card-img-homepage {
+      border-radius: $standard-radius $standard-radius 0 0;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+  }
+
+  .user-name-homepage {
+      margin-left: 8px;
+      margin-top: 8px;
+  }
+
+  .user-social-icons {
+      margin-right: -8px;
+      margin-top: 8px;
+      color: $primary-color;
+      i {
+          padding-right: 8px;
+      }
+  }
+
+  .date-homepage {
+      margin-bottom: 40px;
+  }
+
+  .profile-pic-homepage {
+      text-align: center;
+      img {
+          margin-left: -8px;
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          margin-top: -40px;
+          box-shadow: $standard-shadow;
+      }
+      i {
+          float: right;
+      }
+  }
+}
+
+// reviews section
+.reviews-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 120px;
+  padding-right: 120px;
+  background-color: white;
+  h2 {
+    padding-bottom: 72px;
+  }
+  strong {
+    color: $primary-color;
+  }
+}
+
+.review-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.avatar-large {
+  width: 120px;
+  border-radius: 50%;
+  padding: 16px;
+  align-items: center;
+}
+
+.review-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.review-card p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+.review-card .review-card-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+// buttons
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $primary-color;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: $primary-color;
+  color: white;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
