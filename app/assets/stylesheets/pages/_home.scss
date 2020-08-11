@@ -153,12 +153,7 @@
 .review-card {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  transform: scale(1);
-  transition: $standard-transition;
-  &:hover {
-    transform: scale(1.04);
-  }
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .avatar-large {
