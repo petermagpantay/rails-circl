@@ -1,6 +1,5 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "profile_show";
 
 .header-index {
     text-align: center;
@@ -9,11 +8,7 @@
     font-family: $header-font;
 }
 
-.con {
-    padding: 0px 80px;
-}
-
-.map-style {
+.map-style-index {
     box-shadow: $standard-shadow;
     height: 100vh;
     position: sticky;
