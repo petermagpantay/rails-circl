@@ -1,0 +1,11 @@
+<div>
+    <% if event.image.attached?  %>
+        <%= cl_image_tag event.image.key, class: "event-img-window" %>
+      <% else %>
+        <img class="event-img-window" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+      <% end %>
+    <p class="event-title-window"><%= event.title %></p>
+    <p class="event-location-window"><%= event.location %></p>
+    <p class="event-date-window"><%= event.event_date %></p>
+    <%= link_to "See more details", event_path(event), class: "btn-standard btn-window" %>
+</div>

@@ -1,4 +1,6 @@
-<h1 class="header-index">Choose among 1234 activities</h1>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+
+<h1 class="header-index">Choose among <%= @events.count %> activities</h1>
 
 <div class="con">
     <div class="row">
@@ -15,7 +17,7 @@
                                 <% end %>
                                 <div class="row">
                                     <div class="col-4 user-name-index">
-                                        <p>Name, 36</p>
+                                        <p><%= event.user.first_name %>, <%= event.user.age %></p>
                                     </div>
                                     <div class="col-4 profile-pic-index">
                                         <% if event.user.image.attached? %>
@@ -41,7 +43,8 @@
         <div class="col-lg-6">
             <div class="map-style-index">
                 <div id="map"
-                    style="width:52%; height: 800px;"
+                    style="width:100%; height: 1000px;"
+                    data-markers="<%= @markers.to_json %>"
                     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
                 </div>
             </div>

@@ -10,16 +10,20 @@ User.destroy_all
 puts "Creating Users"
 User.create!(first_name: "Peter", last_name: "the third", age: 28, user_name: "Pete", bio: "Something", email: "peter@circl.com", password: "123456")
 User.create!(first_name: "Paul", last_name: "Wittchen", age: 26, user_name: "Paul", bio: "Something", email: "paul@circl.com", password: "123456")
-User.create!(first_name: "Lil", last_name: "Vincent", age: 26, user_name: "Lil'V", bio: "Something", email: "lilv@circl.com", password: "123456")
+User.create!(first_name: "Lil", last_name: "Vincent", age: 20, user_name: "Lil'V", bio: "Something", email: "lilv@circl.com", password: "123456")
 puts "Users seeded!"
 # =========================================================
 puts "Seeding events..."
-5.times do |i|
+locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 11, München", "Spervogelstraße 11, München",
+            "Kaufingerstraße 12, München", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, München",
+            "Geiselgasteigstraße 88, München", "Georgenstraße, München", "Leopoldstraße, München"]
+
+10.times do |i|
   event = Event.create!(
     user: User.all.sample,
     title: Faker::Lorem.question(word_count: 3, supplemental: false),
     description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
-    location: Faker::Address.full_address,
+    location: locations.sample,
     event_date: Faker::Date.between(from: "2020-08-01", to: "2020-12-31"),
     event_time: "14:00",
   )
