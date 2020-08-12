@@ -1,10 +1,25 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.header-index {
+.form-control-search-index {
+    width: 500px;
+    height: 58px;
+    border-radius: 1px;
+    border: 1px solid $primary-color;
     text-align: center;
-    margin: 40px;
-    font-size: $font-size-header;
+    color: rgb(70, 70, 70);
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 8;
+}
+
+.submit-btn-search {
+    font-size: 16px;
+}
+
+.header-index {
+    margin: 40px 0px 20px 80px;
+    font-size: 20px;
     font-family: $header-font;
 }
 

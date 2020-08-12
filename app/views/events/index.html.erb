@@ -1,6 +1,19 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 
-<h1 class="header-index">Choose among <%= @events.count %> activities</h1>
+<section>
+    <div class="">
+        <%= form_tag events_path, method: :get do %>
+            <%= text_field_tag :query,
+                params[:query],
+                class: "form-control-search-index",
+                placeholder: "Type in a location"
+            %>
+            <%= submit_tag "Search", class: "btn-standard submit-btn-search" %>
+        <% end %>
+    </div>
+</section>
+<p class="header-index">We found <strong><%= @events.count %></strong> events for you</p>
+
 
 <div class="con">
     <div class="row">
@@ -32,6 +45,7 @@
                                     </div>
                                 </div>
                                 <p class="card-title title-index"><%= event.title %></p>
+                                <%# <p><%= event.location %></p>
                                 <p class="card-text date-index"><%= event.event_time %></p>
                                 <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
                             </div>

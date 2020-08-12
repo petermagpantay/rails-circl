@@ -2,10 +2,13 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = policy_scope(Event).order(created_at: :desc)
-    @user = current_user
-
-    @events = Event.geocoded
+    if params[:query].present?
+        @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
+    else
+        @events = policy_scope(Event).order(created_at: :desc)
+        @user = current_user
+    end
+    @events = @events.geocoded
     @markers = @events.map do |event|
         {
           lat: event.latitude,
