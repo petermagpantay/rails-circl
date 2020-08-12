@@ -4,31 +4,29 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                placeholder: "First Name" %>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                placeholder: "Last Name" %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" },
+                placeholder: "Email"%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password" },
+                placeholder: "Password" %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true %>
-    <%= f.input :user_name,
-                required: true,
-                autofocus: true %>
-    <%= f.input :age,
-                required: true,
-                autofocus: true %>
-    <%= f.input :bio,
-                autofocus: true %>
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" },
+                placeholder: "Repeat Password" %>
     <%= f.input :image, as: :file %>
   </div>
 
