@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   def show
     skip_authorization
     @profile = User.find(params[:id])
+    @my_requests = current_user.requests
+    @my_events = current_user.events
   end
 
   def edit
