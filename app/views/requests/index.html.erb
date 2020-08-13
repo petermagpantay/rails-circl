@@ -1,14 +1,39 @@
 <div class="container">
-  <h1>List of request !</h1>
-  <% @requests.each do |request| %>
+  <h3>Here you will find <strong>ALL</strong> your requests !</h3>
+  <h3>Your requests as <strong>HOST</strong></h3>
+  <% @host_events_requests.each do |requests| %>
+    <div class="cards">
+      <div class="card-request-host">
+        <%# <img src="https://source.unsplash.com/random/512x512" /> %>
+        <div class="card-request-infos">
+          <%= requests.first.event.title %>
+          <% requests.each do |request|  %>
+            <ul>
+              <li>
+                <p>Request no. <%= request.id %></p>
+                <p> <%= request.user.user_name  %> wants to join you! </p>
+                <p> Created: <%= request.created_at %> </p>
+                <p> Status: <%= link_to request.status,  "" %> </p>
+                
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <h3>Your requests as <strong>INVITED</strong></h3>
+  <p>Check soon to see who are you meeting with !</p>
+  <% @guest_requests.each do |request| %>
     <div class="cards">
       <div class="card-request">
         <img src="https://source.unsplash.com/random/512x512" />
         <div class="card-request-infos">
-          <p> Request no.<%= request.id%></p>
+          <p>Request no.: <%= request.id %></p>
           <%= link_to request.event.title, event_path(request.event_id) %>
-          <p>Event description¿?</p>
-          <p class="">Status: <%= link_to request.status, "" %></p>
+          <p class="">Requested on: <%= request.created_at %></p>
+          <p class="">Status: <%= request.status %>
+          </p>
         </div>
       </div>
     </div>
