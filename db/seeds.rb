@@ -29,6 +29,7 @@ titles = ["BBQ at Isar", "Watching CL final", "Some beers after work!?", "Swimmi
     title: titles.sample,
     description: Faker::Lorem.paragraph_by_chars(number: 450, supplemental: false),
     location: locations.sample,
+    event_date: Faker::Date.between(from: '2020-08-13', to: '2020-09-25'),
     event_time: "14:00"
   )
   event.save
