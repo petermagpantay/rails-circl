@@ -14,18 +14,22 @@ User.create!(first_name: "Lil", last_name: "Vincent", age: 20, user_name: "Lil'V
 puts "Users seeded!"
 # =========================================================
 puts "Seeding events..."
-locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 11, München", "Spervogelstraße 11, München",
+locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 13, München", "Spervogelstraße 11, München",
             "Kaufingerstraße 12, München", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, München",
             "Geiselgasteigstraße 88, München", "Georgenstraße, München", "Leopoldstraße, München"]
+
+titles = ["BBQ at Isar", "Watching CL final", "Some beers after work!?", "Swimming at Starnberger See",
+          "Dancing classes", "Theatre", "Sailing at Tegernsee", "Yoga in the parc", "Clubbing",
+          "Tabletennis", "Weekendtrip to Gardasee", "Cinema"]
+
 
 10.times do |i|
   event = Event.create!(
     user: User.all.sample,
-    title: Faker::Lorem.question(word_count: 3, supplemental: false),
-    description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
+    title: titles.sample,
+    description: Faker::Lorem.paragraph_by_chars(number: 450, supplemental: false),
     location: locations.sample,
-    event_date: Faker::Date.between(from: "2020-08-01", to: "2020-12-31"),
-    event_time: "14:00",
+    event_time: "14:00"
   )
   event.save
 end
