@@ -1,17 +1,21 @@
 class RequestsController < ApplicationController
-
-  def index 
+  def index
     @requests = policy_scope(Request).order(created_at: :desc)
-   end
+    @guest_event_requests = current_user.requests
+    @host_events_requests = current_user.events.map(&:requests)
+  end
 
-  def show 
+  def show
+    skip_authorization
     @request = Request.find(params[:id])
   end
 
   def new
-    skip_authorization
+    # skip_authorization
     @event = Event.find(params[:event_id])
-    @request = Request.new 
+    @request = Request.new()
+    authorize @event
+    authorize @request
   end
 
   def create
@@ -24,7 +28,13 @@ class RequestsController < ApplicationController
     redirect_to event_path(@event)
   end
 
-  private 
+  def validate
+    skip_authorization
+    @request = Request.find(params[:id])
+    @request.status = @request.update(:value)
+  end
+
+  private
 
   def request_params
     params.require(:request).permit(:status)

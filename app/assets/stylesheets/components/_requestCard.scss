@@ -1,8 +1,14 @@
 .card-request {
   overflow: hidden;
-  height: 120px;
-  max-width: 30%;
+  width: 75%;
+  background: white;
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 16px 0px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
+.card-request-host {
   background: white;
   display: flex;
   align-items: center;

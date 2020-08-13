@@ -21,7 +21,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # @accepted created to filter request status == accepted
     @accepted = []
     @event.requests.each do |request|
       if request.status == "accepted"

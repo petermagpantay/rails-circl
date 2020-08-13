@@ -1,0 +1,14 @@
+<h1>Tulio estamos al aire desde Request#show</h1>
+<p>here we are supposed to show the info of 1 request</p>
+<h1>basic info</h1>
+<br>
+<p class="">Request no.: <%= @request.id %></p>
+<p class="">Event name: <%= @request.event.title %></p>
+<p class="">Status on: 
+  <h2><%= @request.status %></h2>
+</p>
+<p class="">Requested on: <%= @request.created_at %></p>
+<br>
+<br>
+<br>
+<%= link_to "Back to request list", requests_path %>
