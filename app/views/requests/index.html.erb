@@ -13,8 +13,14 @@
                 <p>Request no. <%= request.id %></p>
                 <p> <%= request.user.user_name  %> wants to join you! </p>
                 <p> Created: <%= request.created_at %> </p>
-                <p> Status: <%= link_to request.status,  "" %> </p>
-                
+                <p> Status: <%= request.status %> </p>
+                <p> <%= link_to "Accept Request", validate_request_path(request.id), value: "accepted" %></p>
+
+
+
+                <%#=  %>
+                <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%#=  %>
               </li>
             </ul>
           <% end %>
@@ -24,13 +30,16 @@
   <% end %>
   <h3>Your requests as <strong>INVITED</strong></h3>
   <p>Check soon to see who are you meeting with !</p>
-  <% @guest_requests.each do |request| %>
+  <% @guest_event_requests.each do |request| %>
     <div class="cards">
       <div class="card-request">
         <img src="https://source.unsplash.com/random/512x512" />
         <div class="card-request-infos">
           <p>Request no.: <%= request.id %></p>
-          <%= link_to request.event.title, event_path(request.event_id) %>
+          <p class="">Host: <%= request.event.user.user_name %></p>
+          <p>
+            <%= link_to request.event.title, event_path(request.event_id) %>
+          </p>
           <p class="">Requested on: <%= request.created_at %></p>
           <p class="">Status: <%= request.status %>
           </p>
