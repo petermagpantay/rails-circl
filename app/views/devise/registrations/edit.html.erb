@@ -20,22 +20,26 @@
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password" },
+                placeholder: "Password" %>
     <%#= f.label :first_name, "First Name:" %>
     <%= f.input :first_name,
                 required: true,
-                autofocus: true %>
+                autofocus: true,
+                placeholder: "First Name" %>
     <%= f.input :last_name,
                 required: true,
-                autofocus: true %>
+                autofocus: true,
+                placeholder: "Last Name" %>
     <%= f.input :user_name,
-                required: true,
-                autofocus: true %>
+                autofocus: true,
+                placeholder: "Username" %>
     <%= f.input :age,
-                required: true,
-                autofocus: true %>
+                autofocus: true,
+                placeholder: "Age" %>
     <%= f.input :bio,
-                autofocus: true %>
+                autofocus: true,
+                placeholder: "Tell us something abou you" %>
     <% if current_user.image.attached? %>
       <p>Current Image:</p>
       <%= cl_image_tag current_user.image.key, height: 300, width: 400, crop: :fill %>
@@ -47,8 +51,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :button, "Update", class:"btn-standard" %>
   </div>
 <% end %>
 
-<%= link_to "Back", :back, class:"btn btn-primary" %>
+<%= link_to "Back", :back, class:"btn-standard" %>
