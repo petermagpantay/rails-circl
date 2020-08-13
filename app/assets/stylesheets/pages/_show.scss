@@ -20,7 +20,8 @@
 }
 
 .desc-show {
-    margin-top: 40px;
+    margin-top: 80px;
+    margin-bottom: 72px;
     padding: 0px 80px;
     font-size: $font-size-subheader;
 }
@@ -33,4 +34,11 @@
 .map-style-show {
     text-align: center;
     margin: 0 auto;
+}
+
+.show-img-participant {
+    border-radius: 50%;
+    height: 56px;
+    width: 56px;
+    object-fit: cover;
 }

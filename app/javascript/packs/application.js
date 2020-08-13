@@ -31,6 +31,7 @@ import "flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initPlaces } from '../plugins/init_places';
+import { initRequestBtn } from '../plugins/init_request-btn';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -39,4 +40,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
   initPlaces();
+  initRequestBtn();
 });

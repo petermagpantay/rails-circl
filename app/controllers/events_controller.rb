@@ -2,8 +2,21 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = policy_scope(Event).order(created_at: :desc)
-    @user = current_user
+    if params[:query].present?
+        @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
+    else
+        @events = policy_scope(Event).order(created_at: :desc)
+        @user = current_user
+    end
+    @events = @events.geocoded
+    @markers = @events.map do |event|
+        {
+          lat: event.latitude,
+          lng: event.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { event: event }),
+          image_url: helpers.asset_url('marker.png')
+        }
+    end
   end
 
   def show
@@ -15,6 +28,15 @@ class EventsController < ApplicationController
       end
     end
     authorize @event
+
+    # @eventShow = Event.find(params[:id])
+    @event_show = Event.find(params[:id])
+    @marker = 
+      [{
+        lat: @event_show.latitude,
+        lng: @event_show.longitude,
+        image_url: helpers.asset_url('marker.png')
+      }]
   end
 
   def new
