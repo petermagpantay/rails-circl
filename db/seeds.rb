@@ -1,4 +1,4 @@
-gadrequire "faker"
+require "faker"
 # =========================================================
 puts "Cleaning Request database..."
 Request.destroy_all
