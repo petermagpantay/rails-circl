@@ -5,7 +5,7 @@
       <h2 class="mb-6"><%= @profile.first_name %> <%= @profile.last_name %></h2>
       <p><h3>Bio</h3> <%= @profile.bio %></p>
       <br>
-      <p><% if policy(@profile).edit? %><%= link_to "Edit my Profile", edit_user_registration_path(@profile), class: "btn btn-flat" %><% end %></p>
+      <p><% if policy(@profile).edit? %><%= link_to "Edit my Profile", edit_user_registration_path(@profile), class: "btn-standard" %><% end %></p>
     </div>
 
     <div class="profile-top-right">
