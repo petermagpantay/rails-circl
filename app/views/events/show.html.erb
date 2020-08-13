@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-6 col-md-4 text-show">
       <p class="show-header"><%= @event.title %></p>
-      <p class="date-show"><i class="far fa-calendar-alt fa-1x"></i> <%= @event.event_time.strftime("%-d %B %Y, %-l:%M%p") %></p>
+      <p class="date-show"><i class="far fa-calendar-alt fa-1x"></i> <%= @event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></p>
       <p class="location-show"><i class="fas fa-map-marker-alt fa-1x"></i> <%= @event.location %></p>
       <p>You will meet & mingle with</p>
       <p>HOST:
@@ -35,7 +35,7 @@
 </div>
 <%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
 <%= link_to "Request to join", new_event_request_path(@event), class: "btn btn-standard", id: "req-btn" %>
-<p class="show-req-status d-none" id="req-status"><%= @event.requests[0].status %></p>
+<%# <p class="show-req-status d-none" id="req-status"><%= @event.requests[0].status %></p> %>
 <div class="desc-show-page">
   <p class="desc-show"><%= @event.description %></p>
 </div>
