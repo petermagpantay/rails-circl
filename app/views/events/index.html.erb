@@ -45,8 +45,7 @@
                                     </div>
                                 </div>
                                 <p class="card-title title-index"><%= event.title %></p>
-                                <%# <p><%= event.location %></p>
-                                <p class="card-text date-index"><%= event.event_time %></p>
+                                <p class="card-text date-index"><%= event.event_time.strftime("%-d %B %Y, %-l:%M%p") %></p>
                                 <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
                             </div>
                         </div>
