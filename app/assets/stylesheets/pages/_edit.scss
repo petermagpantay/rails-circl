@@ -1,0 +1,55 @@
+.header-edit-event {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.edit-form {
+    text-align: center;
+
+    .edit-field-title {
+        margin: 16px auto;
+        border: 1px solid $primary-color;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        width: 560px;
+    }
+    .edit-field-desc {
+        margin: 0 auto;
+        margin-bottom: -8px;
+        border: 1px solid $primary-color;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        width: 560px;
+    }
+    .edit-field-location {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        border: 1px solid $primary-color;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        border-radius: 1px;
+    }
+    .algolia-places {
+        width: 560px;
+        svg {
+            margin-top: 10px;
+        }
+      }
+    .edit-field-date {
+        margin: 16px auto;
+        border: 1px solid $primary-color;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        width: 560px;
+    }
+    .edit-field-submit {
+        margin-bottom: 40px;
+        padding: 8px 120px;
+    }
+    .form-control-file {
+        width: 300px;
+        display: inline;
+        margin: 0 auto;
+    }
+}

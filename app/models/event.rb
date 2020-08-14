@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :requests
-  has_many :comments
+  has_many :requests, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :image
 
   geocoded_by :location
