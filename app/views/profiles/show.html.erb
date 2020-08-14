@@ -21,9 +21,6 @@
           <p><%= @profile.bio %></p>
       </div>
       <div class="social-media-container">
-        <% if event.user.facebook?  %>
-          <%= link_to "", event.user.facebook, class: "fab fa-facebook fa-3x" %>
-        <% end %>
         <% if event.user.instagram?  %>
           <%= link_to "", event.user.instagram, class: "fab fa-instagram fa-3x" %>
         <% end %>
