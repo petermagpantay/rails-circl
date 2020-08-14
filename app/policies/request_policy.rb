@@ -6,7 +6,8 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-  def show
-    
+  def validate?
+    # true
+    record.event.user == user
   end
 end
