@@ -57,9 +57,28 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    authorize @event
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    authorize @event
+    redirect_to @event
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    authorize @event
+    redirect_to profile_path(current_user.id)
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :event_date, :event_time)
+    params.require(:event).permit(:title, :description, :location, :event_date)
   end
 end
