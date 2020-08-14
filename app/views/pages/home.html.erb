@@ -1,20 +1,24 @@
 <section class="banner-section bg-white">
-  <div class="d-grid banner-grid">
+  <div class="">
 
     <div class="d-flex flex-column align-items-center justify-content-center banner-homepage-left">
-      <h2 class="mb-6">New in town? Join or host activities to get to know new people. Match, meet & mingle!</h2>
+      <h2 class="mb-6 banner-header">New in town? Join or host activities to get to know new people. Match, meet & mingle!</h2>
 
-      <div class="d-flex justify-content-between">
-        <div class="homepage-section-input">
-          <input class="form-control" type="text" placeholder="Enter your city" readonly>
+      <div class="banner-search-bar">
+        <div class="">
+          <%= form_tag events_path, method: :get do %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control-search-index",
+                  placeholder: "Type in a location (e.g. munich, berlin)"
+              %>
+              <%= submit_tag "Search", class: "btn-standard submit-btn-search" %>
+          <% end %>
         </div>
-        <%= link_to "Search", events_path, class: "btn-standard" %>
       </div>
     </div>
 
-    <div class="banner-homepage-right">
-      <%= image_tag "https://s3-alpha-sig.figma.com/img/995b/ab10/039b0c324b0ca8d8bfcbce7a8d8ce46a?Expires=1598227200&Signature=Ck7wHzUIwxhQtsQqdX-hUu5bumWGJjg-TNusAJ-qn0E8e69kCa6f5h6JUm5BRAb0IxzZCs-WgFsWMsJatzSnckAHD9SgMhMtswWllWK~MnP04Qkmr1aFkKDaUXqNQuwXaQow7uswiN1h0tHBa-w432FkENYCd4pQSSrfCuTpNp5d~6ZUq05SyMcXpHz5oPLPACOS8WBzF6Sr8G-VoUPLM~15OgjzvsJYu3Kc35rQb-ufvSM8I5NPmZcvEejMv2OvgdfhC6GPgtK~NNwfCTX~7ZKmIjhULVqz6AsMYAX1erzHuZfoTTby5YrPkUo7zzFClDOv466cN5HjTjBrW65jtg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA", class: "main-banner-img" %>
-    </div>
+
   </div>
 </section>
 
@@ -22,86 +26,81 @@
   <h2>Most famous activities nearby</h2>
   <div class="homepage-cards">
     <div class="row">
-      <div class="col-4">
-        <div class="card card-homepage">
-          <div class="card-body card-body-homepage">
-            <img class="card-img-homepage" src="https://source.unsplash.com/random" alt="">
-            <div class="row">
-              <div class="col-4 user-name-homepage">
-                <p>Name, 36</p>
-              </div>
-              <div class="col-4 profile-pic-homepage">
-                <img src="https://source.unsplash.com/user/aiony" alt="">
-              </div>
-              <div class="col-4 user-social-icons">
-                <i class="fab fa-linkedin-in fa-lg"></i>
-                <i class="fab fa-instagram fa-lg"></i>
-              </div>
-            </div>
-            <p class="card-title title-homepage"></p>
-            <p class="card-text date-homepage"></p>
-            <b>Activity Name</b>
-            <br>
-            <p>Date & Time</p>
-            <br>
-            <%= link_to "See more details",  class: "btn-standard btn-homepage" %>
-          </div>
-        </div>
-    </div>
-    
-    <div class="col-4">
-      <div class="card card-homepage">
-        <div class="card-body card-body-homepage">
-            <img class="card-img-homepage" src="https://source.unsplash.com/random" alt="">
-            <div class="row">
-              <div class="col-4 user-name-homepage">
-                <p>Name, 36</p>
-              </div>
-              <div class="col-4 profile-pic-homepage">
-                <img src="https://source.unsplash.com/user/aiony" alt="">
-              </div>
-              <div class="col-4 user-social-icons">
-                <i class="fab fa-linkedin-in fa-lg"></i>
-                <i class="fab fa-instagram fa-lg"></i>
-              </div>
-            </div>
-            <p class="card-title title-homepage"></p>
-            <p class="card-text date-homepage"></p>
-            <b>Activity Name</b>
-            <br>
-            <p>Date & Time</p>
-            <br>
-            <%= link_to "See more details",  class: "btn-standard btn-homepage" %>
-          </div>
-        </div>
-    </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-index" style="width: 18rem;">
+            <div class="card-body card-body-index">
+                <img class= "card-img-index" src="https://source.unsplash.com/random">
 
-    <div class="col-4">
-      <div class="card card-homepage">
-        <div class="card-body card-body-homepage">
-          <img class="card-img-homepage" src="https://source.unsplash.com/random" alt="">
-            <div class="row">
-              <div class="col-4 user-name-homepage">
-                <p>Name, 36</p>
-              </div>
-              <div class="col-4 profile-pic-homepage">
-                <img src="https://source.unsplash.com/user/aiony" alt="">
-              </div>
-              <div class="col-4 user-social-icons">
-                <i class="fab fa-linkedin-in fa-lg"></i>
-                <i class="fab fa-instagram fa-lg"></i>
-              </div>
+                <div class="row">
+                    <div class="col-4 user-name-index">
+                        <p>Test, 45</p>
+                    </div>
+                    <div class="col-4 profile-pic-index">
+
+                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+
+                    </div>
+                    <div class="col-4 user-social-icons">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </div>
+                </div>
+                <p class="card-title title-index">Event</p>
+                <p class="card-text date-index">Some time</p>
+                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
             </div>
-            <p class="card-title title-homepage"></p>
-            <p class="card-text date-homepage"></p>
-            <b>Activity Name</b>
-            <br>
-            <p>Date & Time</p>
-            <br>
-            <%= link_to "See more details",  class: "btn-standard btn-homepage" %>
-          </div>
         </div>
-    </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="card card-index" style="width: 18rem;">
+            <div class="card-body card-body-index">
+                <img class= "card-img-index" src="https://source.unsplash.com/random">
+
+                <div class="row">
+                    <div class="col-4 user-name-index">
+                        <p>Test, 45</p>
+                    </div>
+                    <div class="col-4 profile-pic-index">
+
+                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+
+                    </div>
+                    <div class="col-4 user-social-icons">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </div>
+                </div>
+                <p class="card-title title-index">Event</p>
+                <p class="card-text date-index">Some time</p>
+                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card card-index" style="width: 18rem;">
+            <div class="card-body card-body-index">
+                <img class= "card-img-index" src="https://source.unsplash.com/random">
+
+                <div class="row">
+                    <div class="col-4 user-name-index">
+                        <p>Test, 45</p>
+                    </div>
+                    <div class="col-4 profile-pic-index">
+
+                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+
+                    </div>
+                    <div class="col-4 user-social-icons">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </div>
+                </div>
+                <p class="card-title title-index">Event</p>
+                <p class="card-text date-index">Some time</p>
+                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
+            </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -111,15 +110,62 @@
 <section class="reviews-section bg-white">
   <h2>What people say about <strong>CIRCL</strong></h2>
   <div class="review-card">
-    <div class="d-flex d-flex-column justify-content-center">
-      <img src="https://kitt.lewagon.com/placeholder/users/paul-wittchen" class="avatar-large" />
-    </div>
-    <div class="review-card-infos">
-      <div>
-        <h3>Paul Wittchen, 26</h3>
-        <p>“Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <div class="review-card-items">
+      <div class="review-card-author">
+        <div class="d-flex d-flex-column justify-content-center">
+          <img src="https://kitt.lewagon.com/placeholder/users/paul-wittchen" class="avatar-large" />
+        </div>
+        <div>
+          <h3>Paul Wittchen, 26</h3>
+          <div class="review-card-underline"></div>
+        </div>
       </div>
-      
+
+      <div class="review-card-text">
+        <p>“When I moved to Germany for a work project for a couple of weeks, it was hard to connect to a community. Circl really helped me finding people like me and gave us a chance to meet."</p>
+      </div>
+    </div>
+    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+    </div>
+  </div>
+
+  <div class="review-card">
+    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/1036804/pexels-photo-1036804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+
+    </div>
+    <div class="review-card-items">
+      <div class="review-card-author">
+        <div class="d-flex d-flex-column justify-content-center">
+          <img src="https://avatars3.githubusercontent.com/u/66871244?s=460&u=f81cc2b5bb423a54f4bcfc2422bfc5f5aa2acef8&v=4" class="avatar-large" />
+        </div>
+        <div>
+          <h3>Vincent Wittek, 20</h3>
+          <div class="review-card-underline"></div>
+        </div>
+      </div>
+      <div class="review-card-text">
+        <p>“The first step, signing up and trying it out, is always the hardest. But for me and many others I know, joining Circl really improved how I spend my freetime."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="review-card">
+    <div class="review-card-items">
+      <div class="review-card-author">
+        <div class="d-flex d-flex-column justify-content-center">
+          <img src="https://ca.slack-edge.com/T02NE0241-UD0JHSHJB-9ffb88c541d4-512" class="avatar-large" />
+        </div>
+        <div>
+          <h3>Dion Shahini, 40</h3>
+          <div class="review-card-underline"></div>
+        </div>
+      </div>
+      <div class="review-card-text">
+        <p>“Thanks to Circl I dont sit around all weekend and watch netflix, I now know that there is always an awesome event that is happy to invite me, which is an awesome experience for everybody!</p>
+      </div>
+    </div>
+    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/1427741/pexels-photo-1427741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
     </div>
   </div>
 </section>
