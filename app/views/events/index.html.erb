@@ -48,8 +48,13 @@
                                         <% end %>
                                     </div>
                                     <div class="col-4 user-social-icons">
-                                        <i class="fab fa-linkedin-in fa-lg"></i>
-                                        <i class="fab fa-twitter fa-lg"></i>
+                                        <% if event.user.instagram?  %>
+                                            <%= link_to "", event.user.instagram, class: "fab fa-instagram fa-lg" %>
+                                        <% end %>
+                                        <% if event.user.linkedin?  %>
+                                            <%= link_to "", event.user.linkedin, class: "fab fa-linkedin-in fa-lg" %>
+                                        <% end %>
+
                                     </div>
                                 </div>
                                 <p class="card-title title-index"><%= event.title %></p>
