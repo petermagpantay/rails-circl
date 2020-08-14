@@ -17,11 +17,7 @@
     <%#= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" },
-                placeholder: "Password" %>
+
     <%#= f.label :first_name, "First Name:" %>
     <%= f.input :first_name,
                 required: true,
@@ -39,7 +35,7 @@
                 placeholder: "Age" %>
     <%= f.input :bio,
                 autofocus: true,
-                placeholder: "Tell us something abou you" %>
+                placeholder: "Tell us something about you" %>
     <% if current_user.image.attached? %>
       <p>Current Image:</p>
       <%= cl_image_tag current_user.image.key, height: 300, width: 400, crop: :fill %>
@@ -48,6 +44,20 @@
     <% end %>
     <p>Upload local profile image</p>
     <%= f.file_field :image %>
+    <%= f.input :facebook,
+                autofocus: true,
+                placeholder: "Facebook profile" %>
+    <%= f.input :instagram,
+                autofocus: true,
+                placeholder: "Instagram profile" %>
+    <%= f.input :linkedin,
+                autofocus: true,
+                placeholder: "LinkedIn profile" %>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" },
+                placeholder: "Password" %>
   </div>
 
   <div class="form-actions">
