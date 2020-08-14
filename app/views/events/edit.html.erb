@@ -1,0 +1,18 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+ <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
+<h1 class="header-edit-event"><%= @event.title %></h1>
+
+<div class="edit-form">
+    <%= simple_form_for @event do |f| %>
+        <%= f.text_field :title, placeholder: "Whats the name of your event?", class:"edit-field-title" %>
+        <br>
+        <%= f.text_area :description, placeholder: "Say something about your event!", size: "60x12", class:"edit-field-desc" %>
+        <br>
+        <%= f.text_field :location, id:"address-input", placeholder: "Where will your event take place?", type:"search", class:"edit-field-location" %>
+        <br>
+        <%= f.text_field :event_date, id:"basicDate", placeholder:"When will your event take place?", class:"edit-field-date" %>
+        <%= f.input :image, as: :file, class:"edit-field-image" %>
+        <%= f.submit "Update", class:"edit-field-submit btn-standard" %>
+    <% end %>
+</div>

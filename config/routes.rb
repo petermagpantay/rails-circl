@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :requests, only: [:new, :create]
-    resources :comments, only: [:new, :create]
+    resources :comments, only: :create
   end
 end

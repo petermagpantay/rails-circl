@@ -14,11 +14,13 @@
         <% end %>
       </p>
       <p>PARTICIPANTS :
-        <% @accepted.each do |user| %>
-          <% if user.image.attached?  %>
-            <%= cl_image_tag user.image.key, class: "show-img-participant" %>
-          <% else %>
-            <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+        <% unless @accepted.empty? %>
+          <% @accepted.each do |user| %>
+            <% if user.image.attached?  %>
+              <%= cl_image_tag user.image.key, class: "show-img-participant" %>
+            <% else %>
+              <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+            <% end %>
           <% end %>
         <% end %>
       </p>
@@ -50,3 +52,38 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+<section class="comments-form-section">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>Questions about the event?</h1>
+      <%= simple_form_for [@event, @comment] do |f| %>
+        <%= f.input :content %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section class="comments-section">
+  <% @event.comments.each do |comment| %>
+    <div class="comments-card">  
+      <div class="comments-card-items">
+        <div class="comments-card-author">
+          <div class="d-flex d-flex-column justify-content-center">
+            <img src="https://ca.slack-edge.com/T02NE0241-UD0JHSHJB-9ffb88c541d4-512" class="avatar-large" />
+          </div>
+          <div>
+            <h3><%= comment.user.first_name %>, <%= comment.user.age %></h3>
+            <div class="comments-card-underline">
+              <p><%= comment.created_at.strftime("%A, %b %d") %></p>
+            </div>
+          </div>
+        </div>
+        <div class="comments-card-text">
+          <p><%= comment.content %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
