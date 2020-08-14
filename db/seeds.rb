@@ -15,15 +15,16 @@ User.create!(first_name: "Felipe", last_name: "Perez", age: 30, user_name: "Pipe
 puts "Users seeded!"
 # =========================================================
 puts "Seeding events..."
-locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 13, München", "Spervogelstraße 11, München",
-             "Kaufingerstraße 12, München", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, München",
-             "Geiselgasteigstraße 88, München", "Georgenstraße, München", "Leopoldstraße, München"]
+locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 13, Munich", "Spervogelstraße 11, Munich",
+             "Kaufingerstraße 12, Munich", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, Munich",
+             "Geiselgasteigstraße 88, Munich", "Georgenstraße, Munich", "Leopoldstraße, Munich", 
+             "Markgrafenstraße 38, Berlin", "Chausseestraße 49, Berlin", "Lichtenberger Str. 31, Berlin"]
 
 titles = ["BBQ at Isar", "Watching CL final", "Some beers after work!?", "Swimming at Starnberger See",
           "Dancing classes", "Theatre", "Sailing at Tegernsee", "Yoga in the parc", "Clubbing",
-          "Tabletennis", "Weekendtrip to Gardasee", "Cinema"]
+          "Tabletennis", "Weekendtrip to Gardasee", "Cinema", "Chilling at the Lake"]
 
-10.times do |i|
+13.times do |i|
   event = Event.create!(
     user: User.all.sample,
     title: titles.sample,
