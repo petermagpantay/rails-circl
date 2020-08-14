@@ -1,5 +1,4 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
-
 <div class="header-show-page">
   <div class="row">
     <div class="col-6 col-md-4 text-show">
@@ -8,11 +7,11 @@
       <p class="location-show"><i class="fas fa-map-marker-alt fa-1x"></i> <%= @event.location %></p>
       <p>You will meet & mingle with</p>
       <p>HOST:
-      <% if @event.user.image.attached?  %>
-        <%= cl_image_tag @event.user.image.key, class: "show-img-participant" %>
-      <% else %>
-        <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
-      <% end %>
+        <% if @event.user.image.attached?  %>
+          <%= cl_image_tag @event.user.image.key, class: "show-img-participant" %>
+        <% else %>
+          <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+        <% end %>
       </p>
       <p>PARTICIPANTS :
         <% unless @accepted.empty? %>
@@ -36,8 +35,13 @@
   </div>
 </div>
 <%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
-<%= link_to "Request to join", new_event_request_path(@event), class: "btn btn-standard", id: "req-btn" %>
-<%# <p class="show-req-status d-none" id="req-status"><%= @event.requests[0].status %></p> %>
+<% if @request_done %>
+  <span class="btn btn-primary">
+    <%= @request_done.status %>
+  </span>
+<% else %>
+  <%= link_to "Ask to join", event_requests_path(@event), method: :post,  class: "btn btn-info" %>
+<% end %>
 <div class="desc-show-page">
   <p class="desc-show"><%= @event.description %></p>
 </div>

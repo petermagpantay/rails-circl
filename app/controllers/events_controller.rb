@@ -3,36 +3,43 @@ class EventsController < ApplicationController
 
   def index
     if params[:query].present?
-        sql_query = "location ILIKE :query OR title ILIKE :query"
-        @events = policy_scope(Event.where(sql_query, query: "%#{params[:query]}%"))
-        # @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
+      sql_query = "location ILIKE :query OR title ILIKE :query"
+      @events = policy_scope(Event.where(sql_query, query: "%#{params[:query]}%"))
+      # @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
     else
-        @events = policy_scope(Event).order(created_at: :desc)
-        @user = current_user
+      @events = policy_scope(Event).order(created_at: :desc)
+      @user = current_user
     end
     @events = @events.geocoded
     @markers = @events.map do |event|
-        {
-          lat: event.latitude,
-          lng: event.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { event: event }),
-          image_url: helpers.asset_url('marker.png')
-        }
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { event: event }),
+        image_url: helpers.asset_url("marker.png"),
+      }
     end
   end
 
   def show
     @event = Event.find(params[:id])
+    #to show the pool of accepted participants
+    @accepted = []
+    @event.requests.each do |request|
+      if request.status == "accepted"
+        @accepted << request.user
+      end
+    end
     @accepted = @event.requests.where(status: "accepted")
     authorize @event
-
+    @request_done = current_user.requests.find_by(event: @event)
     # @eventShow = Event.find(params[:id])
     @event_show = Event.find(params[:id])
-    @marker = 
+    @marker =
       [{
         lat: @event_show.latitude,
         lng: @event_show.longitude,
-        image_url: helpers.asset_url('marker.png')
+        image_url: helpers.asset_url("marker.png"),
       }]
     @comment = Comment.new
   end
