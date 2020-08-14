@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
   belongs_to :event
 
   validates :content, presence: true
-  validates :content, length: { minimum: 30 }
+  validates :content, length: { minimum: 5 }
 end

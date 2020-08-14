@@ -40,5 +40,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
   initPlaces();
-  initRequestBtn();
+  // initRequestBtn();
 });

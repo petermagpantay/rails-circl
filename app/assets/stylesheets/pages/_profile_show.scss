@@ -168,3 +168,24 @@
     padding-bottom: 72px;
   }
 }
+
+.card-img-event-profile {
+  border-radius: $standard-radius $standard-radius 0 0;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.cancel-edit-event{
+  text-align: center;
+}
+
+.cancel-event{
+  color: red;
+
+  &:hover {
+    color: red;
+    text-decoration: none;
+  }
+}
+

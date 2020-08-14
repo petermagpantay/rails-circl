@@ -45,21 +45,28 @@
         <div class="col-4">
           <div class="card card-profile">
             <div class="card-body card-body-profile">
-              <img class="card-img-profile" src="https://source.unsplash.com/random" alt="">
+              <% if request.event.image.attached?  %>
+                <%= cl_image_tag request.event.image.key, class: "card-img-event-profile" %>
+              <% else %>
+                <img class="card-img-event-profile" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+              <% end %>
               <div class="row">
                 <div class="col-4 user-name-profile">
                   <p><%= request.event.user.first_name %>, <%= request.event.user.age %></p>
                 </div>
                 <div class="col-4 profile-pic-profile">
-                  <img src="https://source.unsplash.com/user/aiony" alt="">
+                  <% if request.event.user.image.attached? %>
+                    <%= cl_image_tag request.event.user.image.key, class: "profile-pic-index" %>
+                  <% else %>
+                    <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                  <% end %>
                 </div>
                 <div class="col-4 user-social-icons">
                   <i class="fab fa-linkedin-in fa-lg"></i>
                   <i class="fab fa-instagram fa-lg"></i>
                 </div>
               </div>
-              <p class="card-title title-profile"></p>
-              <p class="card-text date-profile"></p>
+              <br>
               <b><%= link_to request.event.title, event_path(request.event_id) %></b>
               <br>
               <p>Status: <%= link_to request.status, "" %></p>
@@ -80,23 +87,39 @@
         <div class="col-4">
           <div class="card card-profile">
             <div class="card-body card-body-profile">
-              <img class="card-img-profile" src="https://source.unsplash.com/random" alt="">
+              <% if event.image.attached?  %>
+                <%= cl_image_tag event.image.key, class: "card-img-event-profile" %>
+              <% else %>
+                <img class="card-img-event-profile" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+              <% end %>
               <div class="row">
                 <div class="col-4 user-name-profile">
                   <p><%= @profile.first_name %> <%= @profile.age %></p>
                 </div>
                 <div class="col-4 profile-pic-profile">
-                  <img src="https://source.unsplash.com/user/aiony" alt="">
+                  <% if event.user.image.attached? %>
+                    <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
+                  <% else %>
+                    <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                  <% end %>
                 </div>
                 <div class="col-4 user-social-icons">
                   <i class="fab fa-linkedin-in fa-lg"></i>
                   <i class="fab fa-instagram fa-lg"></i>
                 </div>
               </div>
-              <p class="card-title title-profile"></p>
-              <p class="card-text date-profile"></p>
+              <br>
               <b><%= link_to event.title, event_path(event) %></b>
-              <%= link_to "See more details",  class: "btn-standard btn-profile" %>
+              <div class="cancel-edit-event">
+              <%= link_to "Edit Event", edit_event_path(event) %>
+              <br>
+              <br>
+              <%= link_to "Cancel event",
+                event_path(event),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "cancel-event" %>
+              </div>
             </div>
           </div>
         </div>     
