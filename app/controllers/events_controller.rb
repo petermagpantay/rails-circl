@@ -23,12 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @accepted = []
-    @event.requests.each do |request|
-      if request.status == "accepted"
-        @accepted << request.user
-      end
-    end
+    @accepted = @event.requests.where(status: "accepted")
     authorize @event
 
     # @eventShow = Event.find(params[:id])
@@ -39,6 +34,7 @@ class EventsController < ApplicationController
         lng: @event_show.longitude,
         image_url: helpers.asset_url('marker.png')
       }]
+    @comment = Comment.new
   end
 
   def new
