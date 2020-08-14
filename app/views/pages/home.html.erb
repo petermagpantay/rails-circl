@@ -5,10 +5,16 @@
       <h2 class="mb-6 banner-header">New in town? Join or host activities to get to know new people. Match, meet & mingle!</h2>
 
       <div class="banner-search-bar">
-        <div class="homepage-section-input">
-          <input class="form-control" type="text" placeholder="Enter your city" readonly>
+        <div class="">
+          <%= form_tag events_path, method: :get do %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control-search-index",
+                  placeholder: "Type in a location (e.g. munich, berlin)"
+              %>
+              <%= submit_tag "Search", class: "btn-standard submit-btn-search" %>
+          <% end %>
         </div>
-        <%= link_to "Search", events_path, class: "btn-standard" %>
       </div>
     </div>
 
