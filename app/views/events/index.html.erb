@@ -12,7 +12,15 @@
         <% end %>
     </div>
 </section>
-<p class="header-index">We found <strong><%= @events.count %></strong> events for you</p>
+<% if @events.count >= 1 %>
+  <p class="header-index">We found <strong><%= @events.count %></strong> events for you</p>
+<% else %>
+  <p class="header-index">
+  We are sorry, it seems like there are no events in this city
+  <br>
+  Please enter a new city, or check if you have a typo and try again
+  </p>
+<% end %>
 
 
 <div class="con">
