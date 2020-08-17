@@ -4,6 +4,8 @@
     <div class="profile-top-left">
       <% if @profile.image.attached? %>
         <%= cl_image_tag @profile.image.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
       <% end %>
     </div>
     <div class="d-flex flex-column align-items-left profile-top-right">

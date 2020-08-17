@@ -31,10 +31,11 @@
                     <div class="col-lg-6">
                         <div class="card card-index" style="width: 18rem;">
                             <div class="card-body card-body-index">
-                                <% if event.image.attached?  %>
-                                    <%= cl_image_tag event.image.key, class: "card-img-index" %>
+                                <% if event.photo.attached?  %>
+                                    <%= cl_image_tag event.photo.key, class: "card-img-index" %>
                                 <% else %>
                                     <img class="card-img-index" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+                                    <% raise %>
                                 <% end %>
                                 <div class="row">
                                     <div class="col-4 user-name-index">
@@ -44,7 +45,7 @@
                                         <% if event.user.image.attached? %>
                                             <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
                                         <% else %>
-                                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                                            <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
                                         <% end %>
                                     </div>
                                     <div class="col-4 user-social-icons">
