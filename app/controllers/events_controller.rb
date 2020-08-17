@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = "location ILIKE :query OR title ILIKE :query"
-      @events = policy_scope(Event.where(sql_query, query: "%#{params[:query]}%"))
+      @events = policy_scope(Event.near(params[:query],10))
       # @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
     else
       @events = policy_scope(Event).order(created_at: :desc)
