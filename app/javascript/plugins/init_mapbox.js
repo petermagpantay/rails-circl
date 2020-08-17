@@ -39,15 +39,24 @@ const initMapbox = () => {
       fitMapToMarkers(map, markers);
       map.addControl(new mapboxgl.NavigationControl());
 
+      var scale = new mapboxgl.ScaleControl({
+        maxWidth: 120,
+        unit: 'metric'
+        });
+      map.addControl(scale);
+
       map.addControl(
         new mapboxgl.GeolocateControl({
-        positionOptions: {
-        enableHighAccuracy: true
-        },
-        trackUserLocation: true
-        })
+          positionOptions: {
+            enableHighAccuracy: true
+          },
+          showUserLocation: true,
+          showAccuracyCircle: false
+          })
         );
+
     }
+
   };
 
 export { initMapbox };
