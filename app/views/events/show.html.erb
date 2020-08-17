@@ -76,7 +76,11 @@
       <div class="comments-card-items">
         <div class="comments-card-author">
           <div class="d-flex d-flex-column justify-content-center">
-            <img src="https://ca.slack-edge.com/T02NE0241-UD0JHSHJB-9ffb88c541d4-512" class="avatar-large" />
+            <% if comment.user.image.attached? %>
+              <%= cl_image_tag user.image.key, class: "show-img-participant" %>
+            <% else %>
+              <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="avatar-large" />
+            <% end %>
           </div>
           <div>
             <h3><%= comment.user.first_name %>, <%= comment.user.age %></h3>
