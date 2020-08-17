@@ -13,7 +13,7 @@ const initMapbox = () => {
       mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/paul0711/ckdom0eaz25in1ip6rwcdvpvf'
+        style: 'mapbox://styles/mapbox/streets-v11',
       });
 
       const markers = JSON.parse(mapElement.dataset.markers);
@@ -58,7 +58,5 @@ const initMapbox = () => {
     }
 
   };
-
-
 
 export { initMapbox };

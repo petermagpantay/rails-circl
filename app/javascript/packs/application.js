@@ -32,7 +32,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initPlaces } from '../plugins/init_places';
 import { initRequestBtn } from '../plugins/init_request-btn';
-
+import { initAutobiz } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -40,5 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
   initPlaces();
+  initAutobiz();
   // initRequestBtn();
 });
