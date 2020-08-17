@@ -2,10 +2,19 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    
+    @category = Category.new
+
     if params[:query].present?
       sql_query = "location ILIKE :query OR title ILIKE :query"
       @events = policy_scope(Event.near(params[:query],10))
-      # @events = policy_scope(Event.where("location ILIKE ?", "%#{params[:query]}%"))
+    else
+      @events = policy_scope(Event).order(created_at: :desc)
+      @user = current_user
+    end
+
+    if params[:category].present?
+      @events = policy_scope(Event).joins(:event_categories).where(event_categories: { category_id: params[:category][:id]})
     else
       @events = policy_scope(Event).order(created_at: :desc)
       @user = current_user
