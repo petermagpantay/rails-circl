@@ -17,7 +17,7 @@
       <div class="info-container">
           <h3>Age:</h3>
           <p><%= @profile.age %></p>
-      </div>      
+      </div>
       <div class="info-container">
           <h3>Bio:</h3>
           <p><%= @profile.bio %></p>
@@ -47,10 +47,10 @@
         <div class="col-4">
           <div class="card card-profile">
             <div class="card-body card-body-profile">
-              <% if request.event.image.attached?  %>
-                <%= cl_image_tag request.event.image.key, class: "card-img-event-profile" %>
+              <% if request.event.photo.attached?  %>
+                <%= cl_image_tag request.event.photo.key, class: "card-img-event-profile" %>
               <% else %>
-                <img class="card-img-event-profile" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+                <img class="card-img-event-profile" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
               <% end %>
               <div class="row">
                 <div class="col-4 user-name-profile">
@@ -60,7 +60,7 @@
                   <% if request.event.user.image.attached? %>
                     <%= cl_image_tag request.event.user.image.key, class: "profile-pic-index" %>
                   <% else %>
-                    <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                    <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
                   <% end %>
                 </div>
                 <div class="col-4 user-social-icons">
@@ -76,7 +76,7 @@
               <%= link_to "See more details",  class: "btn-standard btn-profile" %>
             </div>
           </div>
-        </div>     
+        </div>
       <% end %>
     </div>
   </div>
@@ -89,8 +89,8 @@
         <div class="col-4">
           <div class="card card-profile">
             <div class="card-body card-body-profile">
-              <% if event.image.attached?  %>
-                <%= cl_image_tag event.image.key, class: "card-img-event-profile" %>
+              <% if event.photo.attached?  %>
+                <%= cl_image_tag event.photo.key, class: "card-img-event-profile" %>
               <% else %>
                 <img class="card-img-event-profile" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
               <% end %>
@@ -102,7 +102,7 @@
                   <% if event.user.image.attached? %>
                     <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
                   <% else %>
-                    <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                    <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
                   <% end %>
                 </div>
                 <div class="col-4 user-social-icons">
@@ -124,7 +124,7 @@
               </div>
             </div>
           </div>
-        </div>     
+        </div>
       <% end %>
     </div>
   </div>

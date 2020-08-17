@@ -11,7 +11,7 @@
         <% if @event.user.image.attached?  %>
           <%= cl_image_tag @event.user.image.key, class: "show-img-participant" %>
         <% else %>
-          <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+          <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
         <% end %>
       </p>
       <p>PARTICIPANTS :
@@ -20,15 +20,15 @@
             <% if user.image.attached?  %>
               <%= cl_image_tag user.image.key, class: "show-img-participant" %>
             <% else %>
-              <img class="show-img-participant" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+              <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
             <% end %>
           <% end %>
         <% end %>
       </p>
     </div>
     <div class="col-sm-6 col-md-8">
-      <% if @event.image.attached?  %>
-        <%= cl_image_tag @event.image.key, class: "card-img-show" %>
+      <% if @event.photo.attached?  %>
+        <%= cl_image_tag @event.photo.key, class: "card-img-show" %>
       <% else %>
         <img class="card-img-show" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
       <% end %>
