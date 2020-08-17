@@ -1,5 +1,6 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 <div class="header-show-page">
+
   <div class="row">
     <div class="col-6 col-md-4 text-show">
       <p class="show-header"><%= @event.title %></p>
@@ -35,12 +36,16 @@
   </div>
 </div>
 <%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
-<% if @request_done %>
-  <span class="btn btn-primary">
-    <%= @request_done.status %>
-  </span>
+<% if current_user == @event.user %>
+  <%= link_to "Edit Event", edit_event_path(@event), class: "btn-standard btn-show2" %>
 <% else %>
-  <%= link_to "Ask to join", event_requests_path(@event), method: :post,  class: "btn btn-info" %>
+  <% if @request_done %>
+    <span class="btn btn-primary">
+      <%= @request_done.status %>
+    </span>
+  <% else %>
+    <%= link_to "Ask to join", event_requests_path(@event), method: :post,  class: "btn btn-info" %>
+  <% end %>
 <% end %>
 <div class="desc-show-page">
   <p class="desc-show"><%= @event.description %></p>
@@ -67,7 +72,7 @@
 
 <section class="comments-section">
   <% @event.comments.each do |comment| %>
-    <div class="comments-card">  
+    <div class="comments-card">
       <div class="comments-card-items">
         <div class="comments-card-author">
           <div class="d-flex d-flex-column justify-content-center">

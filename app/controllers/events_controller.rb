@@ -32,7 +32,9 @@ class EventsController < ApplicationController
     end
     @accepted = @event.requests.where(status: "accepted")
     authorize @event
-    @request_done = current_user.requests.find_by(event: @event)
+    if user_signed_in?
+      @request_done = current_user.requests.find_by(event: @event)
+    end
     # @eventShow = Event.find(params[:id])
     @event_show = Event.find(params[:id])
     @marker =
@@ -54,7 +56,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     authorize @event
     if @event.save
-      redirect_to events_path
+      redirect_to @event
     else
       render :new
     end
@@ -66,6 +68,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    raise
     @event = Event.find(params[:id])
     @event.update(event_params)
     authorize @event
@@ -82,6 +85,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :event_date, :photo)
+    params.require(:event).permit(:title, :description, :location, :event_date, category_ids: [])
   end
 end

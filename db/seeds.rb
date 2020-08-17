@@ -9,13 +9,14 @@ puts "Cleaning User database..."
 User.destroy_all
 # =========================================================
 puts "Creating Users"
+
 User.create!(first_name: "Peter", last_name: "Heung-min", age: 28, user_name: "Sonny", bio: "New in Munich.", email: "peter@circl.com", password: "123456")
 User.create!(first_name: "Paul", last_name: "Wittchen", age: 26, user_name: "Paul", bio: "Former professional football player in the Bundesliga.", email: "paul@circl.com", password: "123456")
 User.create!(first_name: "Vincent", last_name: "Wittek", age: 23, user_name: "Lil'V", bio: "I am the God of code.", email: "lilv@circl.com", password: "123456")
 User.create!(first_name: "Felipe", last_name: "Lugo", age: 30, user_name: "Pipe", bio: "Let's rock it!", email: "felipe@circl.com", password: "123456")
+
 puts "Users seeded!"
 # =========================================================
-puts "Seeding events..."
 locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 13, Munich", "Spervogelstraße 11, Munich",
              "Kaufingerstraße 12, Munich", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, Munich",
              "Geiselgasteigstraße 88, Munich", "Georgenstraße, Munich", "Leopoldstraße, Munich", 
@@ -34,6 +35,17 @@ images = ["https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657238/munich_
           "https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657237/munich_bmw_fr29e2.jpg",
           "https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657236/munich_biergarten_mruszn.jpg"]
 
+categories = ["Food", "Adventure", "Sport", "Party", "Games", "Swimming", "Culture", "Drinking", "Vacation"]
+
+puts "Seeding categories..."
+categories.each do |category|
+  Category.create!(name: category)
+  puts "Created #{category}"
+end
+puts "Categories seeded"
+
+puts "Seeding events..."
+
 13.times do |i|
   event = Event.new(
     user: User.all.sample,
@@ -47,13 +59,13 @@ images = ["https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657238/munich_
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
   event.save
 end
-puts "Events Seeded!"
+puts "Events seeded!"
 # =========================================================
 puts "Creating Requests"
 # status_pool = ["pending", "accepted", "rejected"]
 # p User.all.sample
 
-15.times do
+10.times do
   request = Request.create!(
     user: User.all.sample,
     event: Event.all.sample,

@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :requests, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :event_categories, dependent: :destroy
+  has_many :categories, through: :event_categories
   has_one_attached :image
 
   geocoded_by :location

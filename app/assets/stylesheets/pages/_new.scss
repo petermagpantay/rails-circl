@@ -52,3 +52,43 @@
         margin: 0 auto;
     }
 }
+
+form label {
+    display: inline-block !important;
+}
+
+.category-choices {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 8px auto 24px auto;
+    width: 32%;
+    & input {
+        display: none;
+    }
+  }
+
+.category {
+    cursor: pointer;
+    & i {
+        cursor: pointer;
+    }
+    & label {
+        cursor: pointer;
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        padding: 8px 16px;
+        max-width: 160px;
+        color: white;
+        margin-bottom: 8px;
+        height: 40px;
+        border-radius: 16px;
+        &.active {
+            background-color: white;
+            border: 1px solid $primary-color;
+            color: $primary-color;
+            opacity: .5;
+        }
+    }
+}
