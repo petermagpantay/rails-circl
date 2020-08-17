@@ -39,48 +39,7 @@
   </div>
 </section>
 
-<section class="profile-requests-section">
-  <h2>My requests</h2>
-  <div class="profile-cards">
-    <div class="row">
-      <% @my_requests.each do |request| %>
-        <div class="col-4">
-          <div class="card card-profile">
-            <div class="card-body card-body-profile">
-              <% if request.event.photo.attached?  %>
-                <%= cl_image_tag request.event.photo.key, class: "card-img-event-profile" %>
-              <% else %>
-                <img class="card-img-event-profile" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-              <% end %>
-              <div class="row">
-                <div class="col-4 user-name-profile">
-                  <p><%= request.event.user.first_name %>, <%= request.event.user.age %></p>
-                </div>
-                <div class="col-4 profile-pic-profile">
-                  <% if request.event.user.image.attached? %>
-                    <%= cl_image_tag request.event.user.image.key, class: "profile-pic-index" %>
-                  <% else %>
-                    <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-                  <% end %>
-                </div>
-                <div class="col-4 user-social-icons">
-                  <i class="fab fa-linkedin-in fa-lg"></i>
-                  <i class="fab fa-instagram fa-lg"></i>
-                </div>
-              </div>
-              <br>
-              <b><%= link_to request.event.title, event_path(request.event_id) %></b>
-              <br>
-              <p>Status: <%= link_to request.status, "" %></p>
-              <br>
-              <%= link_to "See more details",  class: "btn-standard btn-profile" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
+
 <section class="profile-events-section">
   <h2>My events</h2>
   <div class="profile-cards">
