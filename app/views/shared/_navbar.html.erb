@@ -1,3 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+
 <div class="navbar navbar-expand-sm navbar-light navbar-circl fixed-content">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
@@ -19,15 +23,28 @@
         </li>
       <% end %>
       <% if user_signed_in? %>
-        <li class="nav-item nav-inline-block">
-          Welcome back <strong>
-            <%= current_user.user_name %></strong>!<br>
-          Good to see you again!</li>
+        <script>
+              const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 5000,
+              timerProgressBar: true,
+              onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: 'Good to see you again!'
+            })
+        </script>
         <li class="nav-item nav-inline-block">
           <%= link_to "Browse events", events_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Create event", new_event_path, class: "nav-link" %>
+          <%= link_to "Host event", new_event_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.image.attached? %>
