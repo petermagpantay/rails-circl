@@ -32,7 +32,9 @@ class EventsController < ApplicationController
     end
     @accepted = @event.requests.where(status: "accepted")
     authorize @event
-    @request_done = current_user.requests.find_by(event: @event)
+    if user_signed_in?
+      @request_done = current_user.requests.find_by(event: @event)
+    end
     # @eventShow = Event.find(params[:id])
     @event_show = Event.find(params[:id])
     @marker =
