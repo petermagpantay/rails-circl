@@ -12,9 +12,9 @@
         <% end %>
     </div>
 </section>
-<% if @events.count >= 1 %>
-  <p class="header-index">We found <strong><%= @events.count %></strong> events for you</p>
 
+<% if @events.count >= 1 %>
+<p class="header-index">We found <strong><%= @events.count %></strong> events for you</p>
   <div class="con">
     <div class="row">
         <div class="col-lg-6">
@@ -56,7 +56,7 @@
                                 </div>
                                 <p class="text-muted location-index"><small><%= event.location %></small></p>
                                 <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></small></p>
-                                
+
                                 <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
                             </div>
                         </div>

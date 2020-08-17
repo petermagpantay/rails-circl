@@ -16,7 +16,6 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
     @profile.update(profile_params)
     authorize @profile
-
     redirect_to profile_path(@profile)
   end
 
