@@ -23,88 +23,46 @@
 </section>
 
 <section class="activities-section">
-  <h2>Most famous activities nearby</h2>
+  <h2>Most requested activities nearby</h2>
   <div class="homepage-cards">
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="card card-index" style="width: 18rem;">
-            <div class="card-body card-body-index">
-                <img class= "card-img-index" src="https://source.unsplash.com/random">
-
-                <div class="row">
-                    <div class="col-4 user-name-index">
-                        <p>Test, 45</p>
-                    </div>
-                    <div class="col-4 profile-pic-index">
-
-                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
-
-                    </div>
-                    <div class="col-4 user-social-icons">
-                        <i class="fab fa-linkedin-in fa-lg"></i>
-                        <i class="fab fa-twitter fa-lg"></i>
-                    </div>
-                </div>
-                <p class="card-title title-index">Event</p>
-                <p class="card-text date-index">Some time</p>
-                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
-            </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <div class="card card-index" style="width: 18rem;">
-            <div class="card-body card-body-index">
-                <img class= "card-img-index" src="https://source.unsplash.com/random">
-
-                <div class="row">
-                    <div class="col-4 user-name-index">
-                        <p>Test, 45</p>
-                    </div>
-                    <div class="col-4 profile-pic-index">
-
-                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
-
-                    </div>
-                    <div class="col-4 user-social-icons">
-                        <i class="fab fa-linkedin-in fa-lg"></i>
-                        <i class="fab fa-twitter fa-lg"></i>
-                    </div>
-                </div>
-                <p class="card-title title-index">Event</p>
-                <p class="card-text date-index">Some time</p>
-                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
-            </div>
-        </div>
-      </div>
+    <% @top_events.each do |event| %>
       <div class="col-lg-4">
         <div class="card card-index" style="width: 18rem;">
-            <div class="card-body card-body-index">
-                <img class= "card-img-index" src="https://source.unsplash.com/random">
-
-                <div class="row">
-                    <div class="col-4 user-name-index">
-                        <p>Test, 45</p>
-                    </div>
-                    <div class="col-4 profile-pic-index">
-
-                            <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
-
-                    </div>
-                    <div class="col-4 user-social-icons">
-                        <i class="fab fa-linkedin-in fa-lg"></i>
-                        <i class="fab fa-twitter fa-lg"></i>
-                    </div>
-                </div>
-                <p class="card-title title-index">Event</p>
-                <p class="card-text date-index">Some time</p>
-                <%= link_to "See more details", events_path, class: "btn-standard btn-index" %>
+          <div class="card-body card-body-index">
+            <% if event.image.attached?  %>
+              <%= cl_image_tag event.image.key, class: "card-img-index" %>
+            <% else %>
+              <img class="card-img-index" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+            <% end %>
+            <div class="row">
+              <div class="col-4 user-name-index">
+                <p><%= event.user.first_name %>, <%= event.user.age %></p>
+              </div>
+              <div class="col-4 profile-pic-index">
+                <% if event.user.image.attached? %>
+                  <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
+                <% else %>
+                  <img class="profile-pic-index" src="https://source.unsplash.com/2LowviVHZ-E" alt="">
+                <% end %>
+              </div>
+              <div class="col-4 user-social-icons">
+                <% if event.user.instagram?  %>
+                  <%= link_to "", event.user.instagram, class: "fab fa-instagram fa-lg" %>
+                <% end %>
+                <% if event.user.linkedin?  %>
+                  <%= link_to "", event.user.linkedin, class: "fab fa-linkedin-in fa-lg" %>
+                <% end %>
+              </div>
             </div>
+            <p class="card-title title-index"><%= event.title %></p>
+            <p class="text-muted"><small><%= event.location %></small></p>
+            <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></small></p>
+            <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
+          </div>
         </div>
       </div>
-
-    </div>
+    <% end %>
   </div>
-
 </section>
 
 <section class="reviews-section bg-white">
@@ -169,3 +127,4 @@
     </div>
   </div>
 </section>
+
