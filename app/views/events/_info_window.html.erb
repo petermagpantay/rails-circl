@@ -6,6 +6,6 @@
       <% end %>
     <p class="event-title-window"><%= event.title %></p>
     <p class="event-location-window"><%= event.location %></p>
-    <p class="event-date-window"><%= event.event_date %></p>
+    <p class="event-date-window"><%= event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></p>
     <%= link_to "See more details", event_path(event), class: "btn-standard btn-window" %>
 </div>

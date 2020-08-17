@@ -5,14 +5,45 @@
 
 <div class="create-form">
     <%= simple_form_for @event do |f| %>
-        <%= f.text_field :title, placeholder: "Whats the name of your event?", class:"create-field-title" %>
+        <%= f.text_field :title, 
+            placeholder: "Whats the name of your event?", 
+            class:"create-field-title" %>
         <br>
-        <%= f.text_area :description, placeholder: "Say something about your event!", size: "60x12", class:"create-field-desc" %>
+        <%= f.text_area :description, 
+            placeholder: "Say something about your event!", 
+            size: "60x12", 
+            class:"create-field-desc" %>
         <br>
-        <%= f.text_field :location, id:"address-input", placeholder: "Where will your event take place?", type:"search", class:"create-field-location" %>
+        <%= f.text_field :location, 
+            id:"address-input", 
+            placeholder: "Where will your event take place?", 
+            type:"search", 
+            class:"create-field-location" %>
         <br>
-        <%= f.text_field :event_date, id:"basicDate", placeholder:"When will your event take place?", class:"create-field-date" %>
-        <%= f.input :image, as: :file, class:"create-field-image" %>
-        <%= f.submit "Create", class:"create-field-submit btn-standard" %>
+        <%= f.text_field :event_date, 
+            id:"basicDate", 
+            placeholder:"When will your event take place?", 
+            class:"create-field-date" %>
+        <br>
+        <div class="form-group">
+            <label class="control-label check_boxes optional">Choose at least one Category for your event</label>
+            <input type="hidden" name="event[category_ids][]" value="">
+            <div class="category-choices">
+                <% Category.all.each do |category| %>
+                    <div class="category">
+                        <input type="checkbox" class="checkbox-category" value="<%= category.id %>" name="event[category_ids][]" id="event_category_ids_<%= category.id %>">
+                        <label for="event_category_ids_<%= category.id %>">
+                            <i class="fas fa-plus-circle" id="category-icon"></i>
+                            <%= category.name %>
+                        </label>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <%= f.input :image, 
+            as: :file, 
+            class:"create-field-image" %>
+        <%= f.submit "Create event", 
+            class:"create-field-submit btn-standard" %>
     <% end %>
 </div>

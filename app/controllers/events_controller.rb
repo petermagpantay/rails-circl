@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     authorize @event
     if @event.save
-      redirect_to events_path
+      redirect_to @event
     else
       render :new
     end
@@ -66,6 +66,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    raise
     @event = Event.find(params[:id])
     @event.update(event_params)
     authorize @event
@@ -82,6 +83,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :event_date)
+    params.require(:event).permit(:title, :description, :location, :event_date, category_ids: [])
   end
 end
