@@ -1,6 +1,75 @@
 // Import page-specific CSS files here.
 @import "home";
 
+
+// SEARCH SECTION
+.search-section {
+    background-image: url("https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
+  background-size:cover;
+  height: 480px;
+}
+
+.searchbar-index-page {
+    form {
+      text-align: center;
+    }
+    .algolia-places {
+      width: 400px;
+      form {
+        text-align: left !important;
+      }
+      input {
+        border-radius: 8px;
+        width: 400px;
+        height: 48px;
+        font-size: 16px;
+        text-align: left !important;
+      }
+    }
+  }
+
+  .search-header-text { 
+    text-align: center;
+    h1 {
+      margin-top: 160px;
+      padding-left: 0px;
+      font-size: 48px;
+      margin-bottom: -32px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    .subheader-index-page {
+      color: white;
+      font-size: 16px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 16px;
+}
+
+.nav-div {
+    text-align: center;
+}
+
+.badge-white-soft {
+    background-color: rgba(255,255,255,.1);
+    color: #fff;
+}
+
+.badge-white-soft.active {
+    background-color: $primary-color;
+    color: white;
+}
+
+// SEARCH RESULTS SECTION
+
 body {
     background-color: #FAFBFD;
 }

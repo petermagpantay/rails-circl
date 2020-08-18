@@ -35,7 +35,7 @@ images = ["https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657238/munich_
           "https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657237/munich_bmw_fr29e2.jpg",
           "https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657236/munich_biergarten_mruszn.jpg"]
 
-categories = ["Food", "Adventure", "Sport", "Party", "Games", "Swimming", "Culture", "Drinking", "Vacation"]
+categories = ["Food", "Sports", "Culture", "Party", "Drinks", "Adventure", "Sightseeing"]
 
 puts "Seeding categories..."
 categories.each do |category|
