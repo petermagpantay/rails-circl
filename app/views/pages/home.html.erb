@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 <section class="banner-section bg-white">
   <div class="">
 
@@ -65,65 +68,84 @@
   </div>
 </section>
 
-<section class="reviews-section bg-white">
-  <h2>What people say about <strong>CIRCL</strong></h2>
-  <div class="review-card">
-    <div class="review-card-items">
-      <div class="review-card-author">
-        <div class="d-flex d-flex-column justify-content-center">
-          <img src="https://kitt.lewagon.com/placeholder/users/paul-wittchen" class="avatar-large" />
-        </div>
-        <div>
-          <h3>Paul Wittchen, 26</h3>
-          <div class="review-card-underline"></div>
-        </div>
-      </div>
+<section class="pt-10 pt-md-12 reviews-section bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
 
-      <div class="review-card-text">
-        <p>“When I moved to Germany for a work project for a couple of weeks, it was hard to connect to a community. Circl really helped me finding people like me and gave us a chance to meet."</p>
-      </div>
-    </div>
-    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
-    </div>
-  </div>
+          <!-- Heading -->
+          <h2>
+            Our customers are our biggest fans.
+          </h2>
 
-  <div class="review-card">
-    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/1036804/pexels-photo-1036804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+          <!-- Text -->
+          <p class="font-size-lg text-muted mb-7 mb-md-9">
+            We dont' like to brag, but we don't mind letting our customers do it for us. Here are a few nice things folks have said about our themes over the years.
+          </p>
 
-    </div>
-    <div class="review-card-items">
-      <div class="review-card-author">
-        <div class="d-flex d-flex-column justify-content-center">
-          <img src="https://avatars3.githubusercontent.com/u/66871244?s=460&u=f81cc2b5bb423a54f4bcfc2422bfc5f5aa2acef8&v=4" class="avatar-large" />
         </div>
-        <div>
-          <h3>Vincent Wittek, 20</h3>
-          <div class="review-card-underline"></div>
-        </div>
-      </div>
-      <div class="review-card-text">
-        <p>“The first step, signing up and trying it out, is always the hardest. But for me and many others I know, joining Circl really improved how I spend my freetime."</p>
-      </div>
-    </div>
+      </div> <!-- / .row -->
+      <div class="row">
+        <div class="col-12">
 
-  </div>
+          <!-- Card -->
+          <div class="review-cards" data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'>
 
-  <div class="review-card">
-    <div class="review-card-items">
-      <div class="review-card-author">
-        <div class="d-flex d-flex-column justify-content-center">
-          <img src="https://ca.slack-edge.com/T02NE0241-UD0JHSHJB-9ffb88c541d4-512" class="avatar-large" />
+            <div class="col-12 px-1 review-card">
+              <img src="https://images.pexels.com/photos/1427741/pexels-photo-1427741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                <div class="review-card-items">
+                  <div class="review-card-author">
+                    <div>
+                      <h3>Dion Shahini, 40</h3>
+                      <div class="review-card-underline"></div>
+                    </div>
+                  </div>
+                  <div class="review-card-text">
+                    <p>“Thanks to Circl I dont sit around all weekend and watch netflix, I now know that there is always an awesome event that is happy to invite me, which is an awesome experience for everybody!</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-12 px-1 review-card">
+                <div class="review-card-items">
+                  <div class="review-card-author">
+                    <div class="d-flex d-flex-column justify-content-center">
+                      <img src="https://avatars3.githubusercontent.com/u/66871244?s=460&u=f81cc2b5bb423a54f4bcfc2422bfc5f5aa2acef8&v=4" class="avatar-large" />
+                    </div>
+                    <div>
+                      <h3>Vincent Wittek, 20</h3>
+                      <div class="review-card-underline"></div>
+                    </div>
+                  </div>
+                  <div class="review-card-text">
+                    <p>“The first step, signing up and trying it out, is always the hardest. But for me and many others I know, joining Circl really improved how I spend my freetime."</p>
+                  </div>
+                </div>
+                <div class="review-image" style="background-image: url('https://images.pexels.com/photos/1036804/pexels-photo-1036804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+                </div>
+            </div>
+
+            <div class="col-12 px-1 review-card">
+                <div class="review-card-items">
+                  <div class="review-card-author">
+                    <div class="d-flex d-flex-column justify-content-center">
+                      <img src="https://kitt.lewagon.com/placeholder/users/paul-wittchen" class="avatar-large" />
+                    </div>
+                    <div>
+                      <h3>Paul Wittchen, 26</h3>
+                      <div class="review-card-underline"></div>
+                    </div>
+                  </div>
+                  <div class="review-card-text">
+                    <p>“The first step, signing up and trying it out, is always the hardest. But for me and many others I know, joining Circl really improved how I spend my freetime."</p>
+                  </div>
+                </div>
+                <div class="review-image" style="background-image: url('https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
+                </div>
+            </div>
+
+          </div>
         </div>
-        <div>
-          <h3>Dion Shahini, 40</h3>
-          <div class="review-card-underline"></div>
-        </div>
-      </div>
-      <div class="review-card-text">
-        <p>“Thanks to Circl I dont sit around all weekend and watch netflix, I now know that there is always an awesome event that is happy to invite me, which is an awesome experience for everybody!</p>
-      </div>
-    </div>
-    <div class="review-image" style="background-image: url('https://images.pexels.com/photos/1427741/pexels-photo-1427741.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')">
-    </div>
-  </div>
-</section>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
