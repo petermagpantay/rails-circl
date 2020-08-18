@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :event_categories, dependent: :destroy
   has_many :categories, through: :event_categories
-  has_one_attached :image
+  # has_one_attached :image
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
