@@ -11,8 +11,11 @@
         <br>
         <%= f.text_field :location, id:"address-input", placeholder: "Where will your event take place?", type:"search", class:"edit-field-location" %>
         <br>
-        <%= f.text_field :event_date, id:"basicDate", placeholder:"When will your event take place?", class:"edit-field-date" %>
-        <%= f.input :image, as: :file, class:"edit-field-image" %>
+        <%= f.text_field :event_date, 
+            id:"basicDate",
+            placeholder:"When will your event take place?",
+            class:"edit-field-date" %>
+        <%= f.file_field :photo %>
         <%= f.submit "Update", class:"edit-field-submit btn-standard" %>
     <% end %>
 </div>

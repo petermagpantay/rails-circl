@@ -18,7 +18,7 @@ User.create!(first_name: "Felipe", last_name: "Lugo", age: 30, user_name: "Pipe"
 puts "Users seeded!"
 # =========================================================
 locations = ["Dorfstraße 2a, Straßlach", "Ottostraße 13, Munich", "Spervogelstraße 11, Munich",
-             "Kaufingerstraße 12, Munich", "Tegernsee", "Starnbergersee", "Holbeinstraße 46, Munich",
+             "Kaufingerstraße 12, Munich", "Tegernsee", "Starnberger See", "Holbeinstraße 46, Munich",
              "Geiselgasteigstraße 88, Munich", "Georgenstraße, Munich", "Leopoldstraße, Munich", 
              "Markgrafenstraße 38, Berlin", "Chausseestraße 49, Berlin", "Lichtenberger Str. 31, Berlin"]
 

@@ -77,7 +77,7 @@
         <div class="comments-card-author">
           <div class="d-flex d-flex-column justify-content-center">
             <% if comment.user.image.attached? %>
-              <%= cl_image_tag user.image.key, class: "show-img-participant" %>
+              <%= cl_image_tag comment.user.image.key, class: "show-img-participant" %>
             <% else %>
               <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="avatar-large" />
             <% end %>

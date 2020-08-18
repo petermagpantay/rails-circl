@@ -40,9 +40,7 @@
                 <% end %>
             </div>
         </div>
-        <%= f.input :image, 
-            as: :file, 
-            class:"create-field-image" %>
+        <%= f.file_field :photo %>
         <%= f.submit "Create event", 
             class:"create-field-submit btn-standard" %>
     <% end %>
