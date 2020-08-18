@@ -3,21 +3,16 @@
 <div class="row">
     <div class="col-6">
         <div class="">
-            <%= form_tag events_path, method: :get do %>
+            <%= simple_form_for @category, method: :get do |f| %>
                 <%= text_field_tag :query,
                     params[:query],
                     class: "form-control-search-index",
                     placeholder: "Type in a location"
                 %>
-                <%= submit_tag "Search", class: "btn-standard submit-btn-search" %>
+                <%= f.input :id, collection: Category.all.map { |c| [c.name, c.id] }, class: "categories-search-index", label: false %>
+                <%= f.submit "Search", class: "btn-standard submit-btn-search" %>
             <% end %>
         </div>
-    </div>
-    <div class="col-6">
-        <%= simple_form_for @category, method: :get do |f| %>
-            <%= f.input :id, collection: Category.all.map { |c| [c.name, c.id] }, class: "categories-search-index", label: false %>
-            <%= f.submit "Search", class: "btn-standard submit-btn-search" %>
-        <% end %>
     </div>
 </div>
 
