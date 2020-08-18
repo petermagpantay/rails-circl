@@ -1,72 +1,92 @@
+
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<section class="banner-section bg-white">
-  <div class="">
-
-    <div class="d-flex flex-column align-items-center justify-content-center banner-homepage-left">
-      <h2 class="mb-6 banner-header">New in town? Join or host activities to get to know new people. Match, meet & mingle!</h2>
-
-      <div class="banner-search-bar">
-        <div class="">
-          <%= form_tag events_path, method: :get do %>
-              <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control-search-index",
-                  placeholder: "Type in a location (e.g. munich, berlin)"
-              %>
-              <%= submit_tag "Search", class: "btn-standard submit-btn-search" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-
+<div class="header">
+  <div class="header-text">
+    <h1 class="header-landingpage">Find new people for</h1>
+    <br>
+    <p class="generated-text-landingpage">
+      <span id="banner-typed-text"></span>
+    </p>
+    <p class="subheader-landingpage">New in town? Join or host activities to get to know new people. 
+      <br> 
+      Match, meet & mingle!
+    </p>
   </div>
-</section>
 
-<section class="activities-section">
-  <h2>Most requested activities nearby</h2>
-  <div class="homepage-cards">
-    <% @top_events.each do |event| %>
-      <div class="col-lg-4">
-        <div class="card card-index" style="width: 18rem;">
-          <div class="card-body card-body-index">
-            <% if event.photo.attached?  %>
-              <%= cl_image_tag event.photo.key, class: "card-img-index" %>
-            <% else %>
-              <img class="card-img-index" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
-            <% end %>
-            <div class="row">
-              <div class="col-4 user-name-index">
-                <p><%= event.user.first_name %>, <%= event.user.age %></p>
-              </div>
-              <div class="col-4 profile-pic-index">
-                <% if event.user.image.attached? %>
-                  <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
-                <% else %>
-                  <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-                <% end %>
-              </div>
-              <div class="col-4 user-social-icons">
-                <% if event.user.instagram?  %>
-                  <%= link_to "", event.user.instagram, class: "fab fa-instagram fa-lg" %>
-                <% end %>
-                <% if event.user.linkedin?  %>
-                  <%= link_to "", event.user.linkedin, class: "fab fa-linkedin-in fa-lg" %>
-                <% end %>
-              </div>
-            </div>
-            <p class="card-title title-index"><%= event.title %></p>
-            <p class="text-muted"><small><%= event.location %></small></p>
-            <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></small></p>
-            <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
-          </div>
-        </div>
-      </div>
+
+  <div class="searchbar-landingpage">
+    <%= form_tag events_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control-search-index",
+        placeholder: "Enter your location"
+      %>
     <% end %>
   </div>
-</section>
+</div>
+<div class="subheader-categories">
+  <div class="row">
+    <div class="col-3">
+      <i class="fas fa-quote-left fa-2x"></i>
+      <p class="subheader-title">Simply the best website!</p>
+      <i class="fas fa-quote-right fa-2x"></i>
+    </div>
+    <div class="col-3">
+      <i class="fas fa-quote-left fa-2x"></i>
+      <p class="subheader-title">Found awesome people</p>
+      <i class="fas fa-quote-right fa-2x"></i>
+    </div>
+    <div class="col-3">
+      <i class="fas fa-quote-left fa-2x"></i>
+      <p class="subheader-title">New City. New Friends.</p>
+      <i class="fas fa-quote-right fa-2x"></i>
+    </div>
+    <div class="col-3">
+      <i class="fas fa-quote-left fa-2x"></i>
+      <p class="subheader-title">Circl and LinkedIn 🚀</p>
+      <i class="fas fa-quote-right fa-2x"></i>
+    </div>
+  </div>
+</div>
+
+  <div class="about-section">
+    <div class="row">
+      <div class="col-lg-6" data-aos="zoom-in-up">
+        <p class="title-about">CIRCL helps people to get in touch with like-minded all over the world</p>
+        <p class="subtitle-about">
+        All over the world, employees have to switch company, city, country or even continent.
+        That means you have to find a new apartment, a new favorite restaurant and of course new friends. <br>
+        We can´t help you with finding a restaurant, but we can help you to find new friends, so that your new home really feels like home! <br>
+        <br>
+        <br>
+        <% if user_signed_in? %>
+          <%= link_to "Join our community", events_path, class: "btn-standard btn-signup-landing" %>
+        <% else %>
+          <%= link_to "Join our community", new_user_registration_path, class: "btn-standard btn-signup-landing" %>
+        <% end %>
+        </p>
+      </div>
+      <div class="col-lg-6" data-aos="zoom-in-up">
+        <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <input type="text" id="about-user" class="about-count-title" disabled>
+        <p class="about-count-description">User</p>
+      </div>
+      <div class="col-4">
+        <input type="text" id="about-events" class="about-count-title" disabled>
+        <p class="about-count-description">Events created</p>
+      </div>
+      <div class="col-4">
+        <input type="text" id="about-friendships" class="about-count-title" disabled>
+        <p class="about-count-description">New friendships</p>
+      </div>
+    </div>
+  </div>
 
 <section class="pt-10 pt-md-12 reviews-section bg-white">
     <div class="container">
@@ -149,3 +169,12 @@
       </div> <!-- / .row -->
     </div> <!-- / .container -->
   </section>
+
+
+<script>
+  var typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 100
+  });
+</script>
+
