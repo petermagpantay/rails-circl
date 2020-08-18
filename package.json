@@ -6,14 +6,18 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "animejs": "^3.2.0",
+    "aos": "^2.3.4",
     "bootstrap": "^4.5.2",
+    "countup.js": "^2.0.6",
     "flatpickr": "^4.6.6",
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.11.1",
     "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
     "sweetalert2": "^9.17.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.11"
   },
   "version": "0.1.0",
   "devDependencies": {
