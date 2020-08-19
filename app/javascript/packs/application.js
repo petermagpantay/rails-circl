@@ -31,13 +31,17 @@ import { initFlatpickr } from '../plugins/init_flatpickr';
 import { initPlaces } from '../plugins/init_places';
 import { initCategories } from '../plugins/init_categories';
 import { initAutobiz } from '../plugins/init_autocomplete';
+import { loadDynamicBannerText } from '../components/banner';
+import { initCounter } from '../plugins/init_counter';
+import { initTags } from '../components/categories';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
   initMapbox();
   initFlatpickr();
   initPlaces();
   initCategories();
   initAutobiz();
+  // loadDynamicBannerText();
+  initCounter();
+  initTags();
 });

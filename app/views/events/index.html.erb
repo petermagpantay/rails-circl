@@ -1,29 +1,64 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
-<div class="row">
-    <div class="col-6">
-        <div class="">
-            <%= simple_form_for @category, method: :get do |f| %>
-                <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control-search-index",
-                    placeholder: "Type in a location"
-                %>
-                <%= f.input :id, collection: Category.all.map { |c| [c.name, c.id] }, class: "categories-search-index", label: false %>
-                <%= f.submit "Search", class: "btn-standard submit-btn-search" %>
-            <% end %>
-        </div>
+<section class="search-section">
+
+    <div class="search-header">
+        <div class="search-header-text">
+        <h1 class="search-header-index-page">Activities Nearby</h1>
+        <br>
+        <p class="subheader-index-page">What type of event are you looking for?. 
+        </p>
     </div>
-</div>
+
+    <div class="searchbar-index-page">
+        <%= form_tag events_path, method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control-search-index",
+            placeholder: "Enter your location"
+        %>
+        <% end %>
+    </div>
+
+    <div class="nav-div">
+        <nav class="nav grid">
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".food" data-target="#portfolio">
+            <span class="h6 text-lowercase">Food</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".sports" data-target="#portfolio">
+            <span class="h6 text-lowercase">Sports</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 active grid-item" href="#" data-toggle="pill" data-filter=".culture" data-target="#portfolio">
+            <span class="h6 text-lowercase">Culture</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".party" data-target="#portfolio">
+            <span class="h6 text-lowercase">Party</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".drinks" data-target="#portfolio">
+            <span class="h6 text-lowercase">Drinks</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".adventure" data-target="#portfolio">
+            <span class="h6 text-lowercase">Adventure</span>
+            </a>
+            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".sightseeing" data-target="#portfolio">
+            <span class="h6 text-lowercase">Sightseeing</span>
+            </a>
+        </nav>
+    </div>
+    
+</section>
+
 
 <% if @events.size >= 1 %>
 <p class="header-index">We found <strong><%= @events.size %></strong> events for you</p>
   <div class="con">
     <div class="row">
         <div class="col-lg-6">
-            <div class="row">
+            <div class="row" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
                 <% @events.each do |event| %>
                     <div class="col-lg-6">
+
                         <div class="card card-index" style="width: 18rem;">
                             <div class="card-body card-body-index">
                                 <% if event.photo.attached?  %>
@@ -31,38 +66,42 @@
                                 <% else %>
                                     <img class="card-img-index" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
                                 <% end %>
-                                <div class="row">
-                                    <div class="col-4 user-name-index">
-                                        <p><%= event.user.first_name %>, <%= event.user.age %></p>
-                                    </div>
-                                    <div class="col-4 profile-pic-index">
-                                        <% if event.user.image.attached? %>
-                                            <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
-                                        <% else %>
-                                            <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-                                        <% end %>
-                                    </div>
-                                    <div class="col-4 user-social-icons">
-                                        <% if event.user.instagram?  %>
-                                            <%= link_to "", event.user.instagram, class: "fab fa-instagram fa-lg" %>
-                                        <% end %>
-                                        <% if event.user.linkedin? %>
-                                            <%= link_to "", event.user.linkedin, class: "fab fa-linkedin-in fa-lg" %>
-                                        <% end %>
-                                    </div>
-                                </div>
-                                <p class="card-title title-index"><%= event.title %></p>
+                                <%= link_to "#{event.title}", event_path(event), class: "card-title title-index" %>
                                 <div class="index-tags">
                                     <% event.category_ids.each do |category| %>
                                         <p class="category-index"><%= Category.find(category).name %></p>
                                     <% end %>
                                 </div>
                                 <p class="text-muted location-index"><small><%= event.location %></small></p>
-                                <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></small></p>
-
-                                <%= link_to "See more details", event_path(event), class: "btn-standard btn-index" %>
+                                <div class="card-footer-index">
+                                    <hr style="width: 80%">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="profile-pic-index">
+                                                        <% if event.user.image.attached? %>
+                                                            <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
+                                                        <% else %>
+                                                            <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
+                                                        <% end %>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="user-name-index">
+                                                        <p><%= event.user.first_name %>, <%= event.user.age %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B") %></small></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 <% end %>
             </div>
