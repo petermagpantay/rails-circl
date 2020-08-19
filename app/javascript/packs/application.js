@@ -34,6 +34,8 @@ import { initCategories } from '../plugins/init_categories';
 import { initAutobiz } from '../plugins/init_autocomplete';
 import { loadDynamicBannerText } from '../components/banner';
 import { initCounter } from '../plugins/init_counter';
+import { initComment } from '../components/comment';
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -43,4 +45,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutobiz();
   loadDynamicBannerText();
   initCounter();
+  initComment();
 });

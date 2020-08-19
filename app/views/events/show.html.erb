@@ -1,97 +1,113 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
-<div class="header-show-page">
 
-  <div class="row">
-    <div class="col-6 col-md-4 text-show">
-      <p class="show-header"><%= @event.title %></p>
+<div class="header-show-infos">
+  <div class="header-show-img">
+    <% if @event.photo.attached?  %>
+      <%= cl_image_tag @event.photo.key, class: "card-img-show" %>
+    <% else %>
+      <img class="card-img-show" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+    <% end %>
+  </div>
+  <div class="header-show-event-title">
+    <p class="show-header"><%= @event.title %></p>
+  </div>
+  <div class="row justify-content-center show-date-location">
+    <div class="col-3">
       <p class="date-show"><i class="far fa-calendar-alt fa-1x"></i> <%= @event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></p>
+    </div>
+    <div class="col-3">
       <p class="location-show"><i class="fas fa-map-marker-alt fa-1x"></i> <%= @event.location %></p>
-      <p>You will meet & mingle with</p>
-      <p>HOST:
-        <% if @event.user.image.attached?  %>
-          <%= cl_image_tag @event.user.image.key, class: "show-img-participant" %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2">
+      <%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
+    </div>
+    <div class="col-2">
+      <% if current_user == @event.user %>
+        <%= link_to "Edit Event", edit_event_path(@event), class: "btn-standard btn-show2" %>
+      <% else %>
+        <% if @request_done %>
+          <span class="btn-show-request-status" disabled>
+            <%= @request_done.status %>
+          </span>
         <% else %>
-          <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
+          <%= link_to "Ask to join", event_requests_path(@event), method: :post, class: "btn-standard btn-show2" %>
         <% end %>
-      </p>
-      <p>PARTICIPANTS :
-        <% unless @accepted.empty? %>
-          <% @accepted.each do |user| %>
-            <% if user.image.attached?  %>
-              <%= cl_image_tag user.image.key, class: "show-img-participant" %>
-            <% else %>
-              <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-            <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row show-section-both-col">
+  <div class="col-4">
+    <div class="show-infos-left">
+      <% if @event.user.image.attached?  %>
+        <%= cl_image_tag @event.user.image.key, class: "show-img-host" %>
+      <% else %>
+        <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
+      <% end %>
+      <% if @accepted.empty? %>
+        <p></p>
+      <% else %>
+        <% @accepted.each do |user| %>
+          <% if user.image.attached?  %>
+            <%= cl_image_tag user.image.key, class: "show-img-participant" %>
+          <% else %>
+            <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
           <% end %>
         <% end %>
-      </p>
-    </div>
-    <div class="col-sm-6 col-md-8">
-      <% if @event.photo.attached?  %>
-        <%= cl_image_tag @event.photo.key, class: "card-img-show" %>
-      <% else %>
-        <img class="card-img-show" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
       <% end %>
+      <div class="">
+        <p class="desc-show"><%= @event.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="show-infos-right">
+      <div class="map-style-show">
+        <div id="map"
+              style="width:100%; height: 600px;"
+              data-markers="<%= @marker.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
-<% if current_user == @event.user %>
-  <%= link_to "Edit Event", edit_event_path(@event), class: "btn-standard btn-show2" %>
-<% else %>
-  <% if @request_done %>
-    <span class="btn btn-primary">
-      <%= @request_done.status %>
-    </span>
-  <% else %>
-    <%= link_to "Ask to join", event_requests_path(@event), method: :post,  class: "btn btn-info" %>
-  <% end %>
-<% end %>
-<div class="desc-show-page">
-  <p class="desc-show"><%= @event.description %></p>
-</div>
-<div class="map-style-show">
-  <div id="map"
-        style="width:100%; height: 400px;"
-        data-markers="<%= @marker.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-</div>
-
-<section class="comments-form-section">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Questions about the event?</h1>
-      <%= simple_form_for [@event, @comment] do |f| %>
-        <%= f.input :content %>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-</section>
 
 <section class="comments-section">
+  <p class="comment-event-header">Questions about the event?</p>
   <% @event.comments.each do |comment| %>
-    <div class="comments-card">
-      <div class="comments-card-items">
-        <div class="comments-card-author">
-          <div class="d-flex d-flex-column justify-content-center">
-            <% if comment.user.image.attached? %>
-              <%= cl_image_tag comment.user.image.key, class: "show-img-participant" %>
-            <% else %>
-              <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="avatar-large" />
-            <% end %>
-          </div>
-          <div>
-            <h3><%= comment.user.first_name %>, <%= comment.user.age %></h3>
-            <div class="comments-card-underline">
-              <p><%= comment.created_at.strftime("%A, %b %d") %></p>
-            </div>
-          </div>
+    <div class="row justify-content-center">
+      <div class="col-1">
+        <div class="comment-user-img">
+          <% if comment.user.image.attached? %>
+            <%= cl_image_tag comment.user.image.key, class:"comment-img-user" %>
+          <% else %>
+            <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="comment-img-user" />
+          <% end %>
         </div>
+      </div>
+      <div class="col-8">
         <div class="comments-card-text">
-          <p><%= comment.content %></p>
+          <p><b><%= comment.user.first_name %>: </b><%= comment.content %></p>
         </div>
+      </div>
+      <div class="col-2 comment-date">
+        <p><%= comment.created_at.strftime("%A, %b %d") %></p>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<section class="comments-form-section">
+  <%= simple_form_for [@event, @comment] do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <%= f.text_area :content, size: "100x4", class:"comment-content", id:"comment-event" %>
+      </div>
+      <div class="col-2">
+        <%= f.submit class: 'btn-standard', id:"comment-btn" %>
       </div>
     </div>
   <% end %>
