@@ -54,6 +54,7 @@ puts "Seeding events..."
     location: locations.sample,
     event_date: Faker::Date.between(from: "2020-08-21", to: "2020-08-31"),
     event_time: "14:00",
+    category: categories.sample
   )
   photo = URI.open(images.sample)
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
