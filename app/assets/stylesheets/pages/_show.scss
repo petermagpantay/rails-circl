@@ -6,6 +6,8 @@
       width: 100%;
       object-fit: cover;
       height: 480px;
+      border-radius: 0px 0px 320px 0px;
+      box-shadow: 0px 0px 10px rgba(145, 145, 145, 0.808)
     }
   }
   .show-header {
@@ -76,17 +78,11 @@
 
 //comments-form-section
 .comments-form-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  padding-left: 120px;
-  padding-right: 120px;
   background-color: white;
-  h2 {
-    padding-bottom: 72px;
-    text-align: center;
-  }
-  strong {
-    color: $primary-color;
+  padding-bottom: 40px;
+  .comment-content {
+    padding: 8px;
+    border: 1px solid $primary-color;
   }
 }
 
@@ -96,15 +92,18 @@
     padding-left: 120px;
     padding-right: 120px;
     background-color: white;
-    h2 {
-      padding-bottom: 72px;
+    padding-top: 40px;
+    .comment-event-header {
+      font-size: 40px;
       text-align: center;
     }
-    strong {
-      color: $primary-color;
+    .comment-img-user {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
     }
   }
-  
+
   .comments-card {
     overflow: hidden;
     background: white;
@@ -118,58 +117,20 @@
     margin: auto;
   }
   
-  .comments-image {
-    width: 70%;
-    background-size: cover;
-    background-position: center;
+  .comment-img-user img{
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
   }
-  
-  .comments-card-author {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .comments-card-underline {
-    height: 1px;
-    background: rgba(196, 196, 196, 0.8);
-    width: 90%;
-    margin: auto;
-    margin-top: 8px;
-  }
-  
+
   .comments-card-text {
     margin: 15px 30px 15px 30px;
-  }
-  
-  .avatar-large {
-    width: 120px;
-    border-radius: 50%;
+    background-color: rgba(211, 211, 211, 0.377);
+    border-radius: 32px;
     padding: 16px;
-    align-items: center;
   }
   
-  .comments-card h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-    padding-bottom: 8px;
+  .comment-date {
+    padding-top: 40px;
+    font-size: 12px;
   }
-  
-  .comments-card p {
-    font-size: 16px;
-    opacity: 0.7;
-    margin: 0;
-    text-align: center;
-    padding-bottom: 16px;
-  }
-  
-  .comments-card .comments-card-infos {
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
-  }
-  
