@@ -53,8 +53,7 @@ puts "Seeding events..."
     description: Faker::Lorem.paragraph_by_chars(number: 450, supplemental: false),
     location: locations.sample,
     event_date: Faker::Date.between(from: "2020-08-21", to: "2020-08-31"),
-    event_time: "14:00",
-    category: categories.sample
+    event_time: "14:00"
   )
   photo = URI.open(images.sample)
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
