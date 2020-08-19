@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "request_index";
 
 
 // SEARCH SECTION
@@ -40,7 +41,7 @@
     }
     .subheader-index-page {
       color: white;
-      font-size: 16px;
+      font-size: 18px;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
   }
@@ -54,13 +55,16 @@
     margin-top: 16px;
 }
 
-.nav-div {
-    text-align: center;
+.justify-content-center {
+    justify-content: center!important;
 }
 
 .badge-white-soft {
     background-color: rgba(255,255,255,.1);
     color: #fff;
+    &:hover {
+        color: $primary-color;
+    }
 }
 
 .badge-white-soft.active {

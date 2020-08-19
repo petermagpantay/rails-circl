@@ -21,32 +21,14 @@
         <% end %>
     </div>
 
-    <div class="nav-div">
-        <nav class="nav grid">
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".food" data-target="#portfolio">
-            <span class="h6 text-lowercase">Food</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".sports" data-target="#portfolio">
-            <span class="h6 text-lowercase">Sports</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 active grid-item" href="#" data-toggle="pill" data-filter=".culture" data-target="#portfolio">
-            <span class="h6 text-lowercase">Culture</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".party" data-target="#portfolio">
-            <span class="h6 text-lowercase">Party</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".drinks" data-target="#portfolio">
-            <span class="h6 text-lowercase">Drinks</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".adventure" data-target="#portfolio">
-            <span class="h6 text-lowercase">Adventure</span>
-            </a>
-            <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".sightseeing" data-target="#portfolio">
-            <span class="h6 text-lowercase">Sightseeing</span>
-            </a>
-        </nav>
-    </div>
-    
+    <nav class="nav justify-content-center filter-buttons-group">
+        <% @categories.each do |category| %>
+        <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".<%= category.name %>" data-target="#portfolio">
+            <span class="h6 text-lowercase"><%= category.name %></span>
+        </a>
+        <% end %>
+    </nav>
+
 </section>
 
 
@@ -55,9 +37,10 @@
   <div class="con">
     <div class="row">
         <div class="col-lg-6">
-            <div class="row" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
+            <div class="row grid" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
                 <% @events.each do |event| %>
-                    <div class="col-lg-6">
+                    <% tag = event.categories.map{|category| category.name}.join(" ") %>
+                    <div class="element-item col-lg-6 <%=tag%>">
 
                         <div class="card card-index" style="width: 18rem;">
                             <div class="card-body card-body-index">

@@ -33,6 +33,7 @@ import { initCategories } from '../plugins/init_categories';
 import { initAutobiz } from '../plugins/init_autocomplete';
 import { loadDynamicBannerText } from '../components/banner';
 import { initCounter } from '../plugins/init_counter';
+import { initComment } from '../components/comment';
 import { initTags } from '../components/categories';
 
 document.addEventListener('turbolinks:load', () => {
@@ -41,7 +42,11 @@ document.addEventListener('turbolinks:load', () => {
   initPlaces();
   initCategories();
   initAutobiz();
-  // loadDynamicBannerText();
   initCounter();
+  initComment();
   initTags();
+});
+
+document.addEventListener('turbolinks:load', () => {
+  loadDynamicBannerText();
 });

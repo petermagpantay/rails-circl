@@ -23,7 +23,7 @@
   }
   .subheader-landingpage {
     color: white;
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -51,19 +51,9 @@
   height: 100px;
   text-align: center;
   padding: 24px 0px;
-  .subheader-title {
-    font-size: 20px;
-  }
-  .fa-quote-left {
-    color: $primary-color;
-    opacity: .5;
-    margin-left: -160px;
-  }
-  .fa-quote-right {
-    color: $primary-color;
-    opacity: .5;
-    margin-right: -160px;
-    margin-top: -24px;
+  img {
+    height: 100px;
+    width: 100px;
   }
 }
 
@@ -86,7 +76,7 @@
     color: #171C2C;
   }
   .subtitle-about {
-    font-size: 16px;
+    font-size: 18px;
     text-align: left !important;
     color: #8A99B6;
   }
@@ -121,7 +111,7 @@
       object-fit: cover;
   }
   h3 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     margin: 0;
   }
