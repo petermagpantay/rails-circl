@@ -24,7 +24,6 @@ require("channels")
 // External imports
 import "bootstrap";
 import "flatpickr";
-const anime = require('animejs');
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
@@ -35,7 +34,7 @@ import { initAutobiz } from '../plugins/init_autocomplete';
 import { loadDynamicBannerText } from '../components/banner';
 import { initCounter } from '../plugins/init_counter';
 import { initComment } from '../components/comment';
-
+import { initTags } from '../components/categories';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -46,4 +45,5 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   initCounter();
   initComment();
+  initTags();
 });

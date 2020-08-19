@@ -35,8 +35,23 @@
           <%= link_to "Ask to join", event_requests_path(@event), method: :post, class: "btn-standard btn-show2" %>
         <% end %>
       <% end %>
+      <% if @accepted.empty? %>
+        <p></p>
+      <% else %>
+        <% @accepted.each do |user| %>
+          <% if user.image.attached?  %>
+            <%= cl_image_tag user.image.key, class: "show-img-participant" %>
+          <% else %>
+            <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="">
+        <p class="desc-show"><%= @event.description %></p>
+      </div>
     </div>
   </div>
+
 </div>
 <div class="row show-section-both-col">
   <div class="col-4">

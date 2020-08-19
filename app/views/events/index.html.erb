@@ -1,29 +1,46 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
-<div class="row">
-    <div class="col-6">
-        <div class="">
-            <%= simple_form_for @category, method: :get do |f| %>
-                <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control-search-index",
-                    placeholder: "Type in a location"
-                %>
-                <%= f.input :id, collection: Category.all.map { |c| [c.name, c.id] }, class: "categories-search-index", label: false %>
-                <%= f.submit "Search", class: "btn-standard submit-btn-search" %>
-            <% end %>
-        </div>
+<section class="search-section">
+
+    <div class="search-header">
+        <div class="search-header-text">
+        <h1 class="search-header-index-page">Activities Nearby</h1>
+        <br>
+        <p class="subheader-index-page">What type of event are you looking for?. 
+        </p>
     </div>
-</div>
+
+    <div class="searchbar-index-page">
+        <%= form_tag events_path, method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control-search-index",
+            placeholder: "Enter your location"
+        %>
+        <% end %>
+    </div>
+
+    <nav class="nav justify-content-center filter-buttons-group">
+        <% @categories.each do |category| %>
+        <a class="badge badge-pill badge-white-soft mr-1 mb-1 grid-item" href="#" data-toggle="pill" data-filter=".<%= category.name %>" data-target="#portfolio">
+            <span class="h6 text-lowercase"><%= category.name %></span>
+        </a>
+        <% end %>
+    </nav>
+    
+</section>
+
 
 <% if @events.size >= 1 %>
 <p class="header-index">We found <strong><%= @events.size %></strong> events for you</p>
   <div class="con">
     <div class="row">
         <div class="col-lg-6">
-            <div class="row">
+            <div class="row grid" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
                 <% @events.each do |event| %>
-                    <div class="col-lg-6">
+                    <% tag = event.categories.map{|category| category.name}.join(" ") %>
+                    <div class="element-item col-lg-6 <%=tag%>">
 
                         <div class="card card-index" style="width: 18rem;">
                             <div class="card-body card-body-index">
