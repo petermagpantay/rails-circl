@@ -24,6 +24,7 @@ class EventsController < ApplicationController
         image_url: helpers.asset_url("marker.png"),
       }
     end
+    @categories = Category.all
   end
 
   def show
