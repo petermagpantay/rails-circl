@@ -42,8 +42,11 @@ document.addEventListener('turbolinks:load', () => {
   initPlaces();
   initCategories();
   initAutobiz();
-  loadDynamicBannerText();
   initCounter();
   initComment();
   initTags();
+});
+
+document.addEventListener('turbolinks:load', () => {
+  loadDynamicBannerText();
 });
