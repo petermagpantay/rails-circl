@@ -57,41 +57,56 @@
   <div class="profile-cards">
     <div class="row">
       <% @my_events.each do |event| %>
-        <div class="col-4">
-          <div class="card card-profile">
-            <div class="card-body card-body-profile">
-              <% if event.photo.attached?  %>
-                <%= cl_image_tag event.photo.key, class: "card-img-event-profile" %>
-              <% else %>
-                <img class="card-img-event-profile" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
-              <% end %>
-              <div class="row">
-                <div class="col-4 user-name-profile">
-                  <p><%= @profile.first_name %> <%= @profile.age %></p>
+        <% tag = event.categories.map{|category| category.name}.join(" ") %>
+          <div class="element-item col-lg-3 <%=tag%>">
+            <div class="card card-index" style="width: 18rem;">
+              <div class="card-body card-body-index">
+                <% if event.photo.attached?  %>
+                  <%= cl_image_tag event.photo.key, class: "card-img-index" %>
+                <% else %>
+                  <img class="card-img-index" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
+                <% end %>
+                <%= link_to "#{event.title}", event_path(event), class: "card-title title-index" %>
+
+
+                <div class="cancel-edit-event">
+                  <%= link_to "Edit Event", edit_event_path(event) %>
+                  <br>
+
+
+                  <%= link_to "Cancel",
+                    event_path(event),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: "cancel-event" %>
                 </div>
-                <div class="col-4 profile-pic-profile">
-                  <% if event.user.image.attached? %>
-                    <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
-                  <% else %>
-                    <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-                  <% end %>
-                </div>
-                <div class="col-4 user-social-icons">
-                  <i class="fab fa-linkedin-in fa-lg"></i>
-                  <i class="fab fa-instagram fa-lg"></i>
-                </div>
-              </div>
-              <br>
-              <b><%= link_to event.title, event_path(event) %></b>
-              <div class="cancel-edit-event">
-              <%= link_to "Edit Event", edit_event_path(event) %>
-              <br>
-              <br>
-              <%= link_to "Cancel event",
-                event_path(event),
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: "cancel-event" %>
+
+                <p class="text-muted location-index"><small><%= event.location %></small></p>
+                <div class="card-footer-index">
+                  <hr style="width: 80%">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="profile-pic-index">
+                            <% if event.user.image.attached? %>
+                              <%= cl_image_tag event.user.image.key, class: "profile-pic-index" %>
+                            <% else %>
+                              <img class="profile-pic-index" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
+                            <% end %>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="user-name-index">
+                            <p><%= event.user.first_name %>, <%= event.user.age %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <p class="card-text date-index text-muted"><small><%= event.event_date.strftime("%-d %B") %></small></p>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
