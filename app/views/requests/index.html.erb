@@ -1,34 +1,48 @@
 <div class="container">
   <h3>Here you will find <strong>ALL</strong> your requests !</h3>
   <h3>Your requests as <strong>HOST</strong></h3>
+
+  
   <% @host_events_requests.each do |requests| %>
     <div class="cards">
       <div class="card-request-host">
+
         <%# <img src="https://source.unsplash.com/random/512x512" /> %>
         <div class="card-request-infos">
           <% unless requests.empty?%>
             <%= requests.first.event.title %>
             <% requests.each do |request|  %>
-              <ul>
-                <li>
-                  <p>Request no. <%= request.id %></p>
-                  <p> <%= request.user.user_name  %> wants to join you! </p>
-                  <p> Created: <%= request.created_at %> </p>
-                  <p> Status: <%= request.status %> </p>
-                  <div class="d-flex">
-                    <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
-                      <%= f.button :submit, value: "accepted", class: "btn btn-block btn-primary lift" %>
-                    <% end %>
-                    <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
-                      <%= f.button :submit, value: "declined", class: "btn btn-block btn-primary lift" %>
-                    <% end %>
+
+
+              <div class="cards">
+                <div class="card-request">
+                  <%# <img src="https://source.unsplash.com/random/512x512" /> %>
+                  <div class="card-request-infos">
+                    <p>Request no.: <%= request.id %></p>
+                    <p> <%= request.user.user_name  %> wants to join you! </p>
+                    <p>
+                      <%# <%= link_to request.event.title, event_path(request.event_id) %>
+                    </p>
+                    <p class="">Requested on: <%= request.created_at %></p>
+                    <p class="">Status: <%= request.status %>
+                    </p>
+                    <div class="d-flex">
+                      <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
+                        <%= f.button :submit, value: "accepted", class: "btn btn-block btn-primary lift" %>
+                      <% end %>
+                      <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
+                        <%= f.button :submit, value: "declined", class: "btn btn-block btn-primary lift" %>
+                      <% end %>
+                    </div>
                   </div>
-                </li>
-              </ul>
+                </div>
+              </div>
+
+
             <% end %>
           <% end %>
-          </div>
         </div>
+      </div>
     </div>
   <% end %>
   <h3>Your requests as <strong>GUEST</strong></h3>
