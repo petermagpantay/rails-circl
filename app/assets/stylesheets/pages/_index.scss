@@ -62,6 +62,9 @@
 .badge-white-soft {
     background-color: rgba(255,255,255,.1);
     color: #fff;
+    &:hover {
+        color: $primary-color;
+    }
 }
 
 .badge-white-soft.active {
