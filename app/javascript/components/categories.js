@@ -2,7 +2,6 @@ import $ from "jquery"
 
 const initTags = () => {
   var grid = document.querySelector('.grid');
-  console.log(grid)
   var iso = new Isotope( grid, {
     // options...
     itemSelector: '.element-item'
