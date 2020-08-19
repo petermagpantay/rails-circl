@@ -8,15 +8,19 @@
       <% end %>
     </div>
     <h2 class="profile-name"><%= @profile.first_name %> <%= @profile.last_name %></h2>
-    <div class="info-container">
-      <div>
-        <p>Username</p>
-        <h4><%= @profile.user_name %></h4>
-      </div>
-      <div>
-        <p>Age</p>
-        <h3><%= @profile.age %></h3>
-      </div>
+    <div class="info-container profile-additional-info">
+      <% if @profile.user_name? %>
+        <div>
+          <p>Username</p>
+          <h4><%= @profile.user_name %></h4>
+        </div>
+      <% end %>
+      <% if @profile.age? %>
+        <div>
+          <p>Age</p>
+          <h3><%= @profile.age %></h3>
+        </div>
+      <% end %>
     </div>
     <div class="edit-profile-button">
       <p><% if policy(@profile).edit? %><%= link_to "Edit my Profile", edit_user_registration_path(@profile), class: "btn-standard" %><% end %></p>
