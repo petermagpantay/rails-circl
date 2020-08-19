@@ -51,19 +51,9 @@
   height: 100px;
   text-align: center;
   padding: 24px 0px;
-  .subheader-title {
-    font-size: 20px;
-  }
-  .fa-quote-left {
-    color: $primary-color;
-    opacity: .5;
-    margin-left: -160px;
-  }
-  .fa-quote-right {
-    color: $primary-color;
-    opacity: .5;
-    margin-right: -160px;
-    margin-top: -24px;
+  img {
+    height: 100px;
+    width: 100px;
   }
 }
 
