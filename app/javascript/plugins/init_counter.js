@@ -4,7 +4,7 @@ const initCounter = () => {
 
     anime({
         targets: '#about-user',
-        value: [0, 6285],
+        value: [0, 628],
         round: 1,
         easing: 'easeInOutExpo',
         duration: 2000
@@ -12,7 +12,7 @@ const initCounter = () => {
 
       anime({
         targets: '#about-events',
-        value: [0, 4720],
+        value: [0, 472],
         round: 1,
         easing: 'easeInOutExpo',
         duration: 2000
@@ -20,7 +20,7 @@ const initCounter = () => {
 
       anime({
         targets: '#about-friendships',
-        value: [0, 2061],
+        value: [0, 206],
         round: 1,
         easing: 'easeInOutExpo',
         duration: 2000
