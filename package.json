@@ -12,6 +12,7 @@
     "countup.js": "^2.0.6",
     "flatpickr": "^4.6.6",
     "flickity": "^2.2.1",
+    "isotope-layout": "^3.0.6",
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.11.1",
     "places.js": "^1.19.0",
