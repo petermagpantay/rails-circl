@@ -37,126 +37,141 @@
 <main class="pb-8 pb-md-11 mt-md-n6">
   <div class="container-md">
     <div class="row justify-content-between">
-      <div class="col-12 col-md-5">
+
+
+      <div class="col-12 col-md-6">
         <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
           <div class="collapse d-md-block">
             <div class="lcard-body">
               <h2 class="text-muted">
-                Your Events
+                Attending
+              </h2>
+              <% @guest_event_requests.each do |request| %>
+                <div class="lcard card-row shadow-light-lg mb-6">
+                  <div class="no-gutters">
+                    <!-- Header of request -->
+                    <div class='d-flex' style="padding: 2rem 1.5rem 0;">
+                      <a class="card-img-left" style="background-image: url(<%= cl_image_path request.event.photo.key %>); border-radius: 50%; width: 40px; height: 40px; display: block" href="#!">
+                      </a>
+
+                      <!-- Heading -->
+                      <div style="width: 80%; margin-left: 1rem;">
+                        <h3 class="text-bold" style="color: #39c6d9;">
+                          <%= request.event.title %>
+                        </h3>
+
+
+                        <p><%= request.created_at.strftime('%A, %b %d') %></p>
+                      </div>
+                    </div>
+
+                    <div class='request-bottom'>
+                      <!-- Divider -->
+                      <hr class="card-meta-divider" style="width: 100%; margin: 0 0 1.5rem;">
+                      <div class="d-flex">
+                        <% if request.event.user.image.attached? %>
+                          <%= cl_image_tag request.event.user.image.key, class: "avatar avatar-sm mr-2" %>
+                        <% end %>
+                        <span class="text-muted mr-2">Hosted by</span>
+                        <%= request.event.user.user_name %>
+                      </div>
+                      <% status = request.status == "pending" ? "orange" : "green" %>
+                      <h6 class="text-uppercase mr-2 mb-0" style="color: <%= status %>">
+                        <%= request.status %>
+                      </h6>
+                    </div>
+
+
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div class="lcard-body">
+              <h2 class="text-muted">
+                Hosting
               </h2>
               <% @host_events_requests.each do |requests| %>
               <% unless requests.empty?%>
+                <div class="lcard card-row shadow-light-lg mb-6">
+                  <div class="no-gutters">
+                    <!-- Header of request -->
+                    <div class='d-flex' style="padding: 2rem 1.5rem 0;">
+                      <a class="card-img-left" style="background-image: url(<%= cl_image_path requests.first.event.photo.key %>); border-radius: 50%; width: 40px; height: 40px; display: block" href="#!">
+                      </a>
+
+                      <!-- Heading -->
+                      <div style="width: 80%; margin-left: 1rem;">
+                        <h3 class="text-bold" style="color: #39c6d9;">
+                          <%= requests.first.event.title %>
+                        </h3>
 
 
-                <div class="card p-3">
-                  <div class="card-header">
-                    <%= requests.first.event.title %>
-                  </div>
-                  <div class="card-body p-3">
-                    <% requests.each do |request|  %>
-                      <div class="small-card d-flex">
-                        <%= cl_image_tag request.event.photo.key, class: "w-50" %>
-                        <div class="card-body p-2">
-                          Request no.: <%= request.id %>
-                          <%= request.user.user_name  %> wants to join you!
+                        <p><%= requests.first.event.created_at.strftime('%A, %b %d') %></p>
+                      </div>
+                    </div>
+
+                    <div class='request-bottom'>
+                      <!-- Divider -->
+                      <h6 class="text-muted"><%= pluralize(requests.size, 'request') %> </h6>
+                      <hr class="card-meta-divider" style="width: 100%; margin: 0 0 1.5rem;">
+                      <% requests.each do |request|  %>
+                      <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+                        <div class="d-flex">
+                          <% if request.event.user.image.attached? %>
+                            <%= cl_image_tag request.event.user.image.key, class: "avatar avatar-sm mr-2" %>
+                          <% end %>
+                          <span class="text-muted mr-2">Request from</span>
+                          <%= request.event.user.user_name %>
+                        </div>
+                        <% status = request.status == "pending" ? "orange" : "green" %>
+                        <div class="d-flex align-items-center justify-content-between" style="width: 30%">
+                        <% if status == "orange" %>
+                          <%= link_to validate_request_path(id: request, value: "accepted"), method: :patch do %>
+                            <i class="fas fa-check-circle"></i>
+                          <% end %>
+
+                          <%= link_to validate_request_path(id: request, value: "declined"), method: :patch do %>
+                            <i class="fas fa-times-circle"></i>
+                          <% end %>
 
 
-                          Requested on: <%= request.created_at %>
-                          <%= request.status %>
+                        <% elsif request.status == "declined" %>
+                          <%= link_to validate_request_path(id: request, value: "accepted"), method: :patch do %>
+                            <i class="fas fa-check-circle"></i>
+                          <% end %>
 
-                          <div class="d-flex">
+                          <i class="fas fa-times-circle" style="color: var(--red);"></i>
 
-                            <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
-                            <%= f.button :submit, value: "accepted", class: "btn btn-block btn-primary lift" %>
-                            <% end %>
+                        <% else %>
 
-                            <%= simple_form_for(request, url: validate_request_path(request), html: { method: :patch }) do |f| %>
-                            <%= f.button :submit, value: "declined", class: "btn btn-block btn-primary lift" %>
-                            <% end %>
-                          </div>
+                          <i class="fas fa-check-circle" style="color: #1edd88"></i>
+
+                          <%= link_to validate_request_path(id: request, value: "declined"), method: :patch do %>
+                            <i class="fas fa-times-circle"></i>
+                          <% end %>
+                        <% end %>
                         </div>
                       </div>
-                    <% end %>
+                      <% end %>
+                    </div>
+
                   </div>
                 </div>
+
               <% end %>
             <% end %>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-md-5">
-        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
-          <div class="collapse d-md-block">
-            <div class="lcard-body">
-              <h2 class="text-muted">
-                Your Requests
-              </h2>
-              <% @guest_event_requests.each do |request| %>
-                <div class="card card-row shadow-light-lg mb-6">
-                  <div class="row no-gutters">
-                    <a class="col-12 col-md-6 bg-cover card-img-left" style="background-image: url(<%= cl_image_path request.event.photo.key %>);" href="#!">
-
-                      <!-- Image (placeholder) -->
-                      <%= cl_image_tag request.event.photo.key, class: "img-fluid d-md-none invisible" %>
-
-                      <!-- Shape -->
-                      <!-- <div class="shape shape-right shape-fluid-y svg-shim text-white d-none d-md-block">
-                        <svg viewBox="0 0 112 690" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M116 0H51v172C76 384 0 517 0 517v173h116V0z" fill="currentColor"></path></svg>
-                      </div> -->
-                    </a>
-                    <div class="col-12 col-md-6">
-
-                      <!-- Body -->
-                      <a class="card-body" href="#!">
-
-                        <!-- Heading -->
-                        <h3>
-                          <%= request.event.title %>
-                        </h3>
-
-                        <!-- Text -->
-                        <p class="mb-0 text-muted">
-                          Request no.: <%= request.id %>
-                          <%= link_to request.event.title, event_path(request.event_id) %>
-                          with <%= request.event.user.user_name %>
-                          <%= request.created_at.strftime('%A, %b %d') %>
-                        </p>
-
-                      </a>
-
-                      <!-- Meta -->
-                      <a class="card-meta" href="#!">
-
-                        <!-- Divider -->
-                        <hr class="card-meta-divider">
-
-                        <!-- Avatar -->
-                        <div class="avatar avatar-sm mr-2">
-                          <img src="assets/img/avatars/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-
-                        <!-- Author -->
-                        <h6 class="text-uppercase text-muted mr-2 mb-0">
-                          <%= request.status %>
-                        </h6>
-
-                        <!-- Date -->
-                        <p class="h6 text-uppercase text-muted mb-0 ml-auto">
-                          <time datetime="2019-05-29">May 29</time>
-                        </p>
-
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
   </div>
 </main>
