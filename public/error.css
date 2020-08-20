@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+.container {
+  height: 100vh;
+}
+
+.image {
+  background-image: url("https://source.unsplash.com/random/800x600");
+  background-position: center;
+  background-size: cover;
+  border-radius: 0px 0px 0px 50px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Questrial";
+}
+
+p {
+  font-family: "Antic-Slab";
+}
+
+.btn-standard {
+  background-color: #61e8dc;
+  padding: 8px 16px;
+  color: white;
+  border: 1px solid #61e8dc;
+  transition: 0.7s ease;
+}
+.btn-standard:hover {
+  border: 1px solid #61e8dc;
+  background-color: transparent;
+  color: #61e8dc;
+  text-decoration: none;
+}
