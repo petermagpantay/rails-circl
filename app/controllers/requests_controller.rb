@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
     @request.event = @event
     @request.user = current_user
     authorize @request
-    
+
     if @request.save!
       redirect_to event_path(@event)
     else
@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
 
   def validate
     @request = Request.find(params[:id])
-    @request.update(status: params[:commit])
+    @request.update(status: params[:value])
     authorize @request
     redirect_to requests_path
   end
