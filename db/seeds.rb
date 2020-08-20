@@ -100,7 +100,7 @@ puts "Seeding events..."
     description: descriptions[i-1],
     location: locations[i - 1],
     #categories: Category.all[5,6],
-    categories: Category.all[category_ids[i-1][0],category_ids[i-1][1]],
+    #categories: Category.all[category_ids[i-1[0],category_ids[i-1][1]],
 
 
     event_date: Faker::Date.between(from: "2020-08-21", to: "2020-08-31"),
@@ -108,6 +108,7 @@ puts "Seeding events..."
   )
   photo = URI.open(images[i - 1])
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
+  event.categories = Category.all[rand(1..4), rand(5..7)]
   event.save
   puts "#{i + 1}th Event created..."
 
