@@ -109,6 +109,10 @@ body {
   box-shadow: $standard-shadow;
   height: 100vh;
   position: sticky;
+  top: 87px;
+  #map {
+    height: 86vh;
+  }
 }
 
 .card-body {
