@@ -116,16 +116,16 @@ justify-content: center;
   }
   h3 {
     font-size: 32px;
-    font-size: 16px;
+    font-size: 18px;
     color: $secondary-color;
   }
   h4 {
-    font-size: 16px;
+    font-size: 18px;
     color: $secondary-color
   }
   p {
     padding: 8px;
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -246,6 +246,8 @@ justify-content: center;
 
 .cancel-edit-event{
   text-align: center;
+  font-size:22px;
+  padding: 25px 0;
 }
 
 .cancel-event{

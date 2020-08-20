@@ -1,6 +1,7 @@
 import $ from "jquery"
 
 const initTags = () => {
+
   const grid = document.querySelector('.grid');
 
   if(grid){
