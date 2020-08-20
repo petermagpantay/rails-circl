@@ -1,0 +1,48 @@
+.edit-profile {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    margin-top: -80px;
+    width: 1300px;
+    min-height: 640px;
+    padding-top: 80px;
+    border-radius: 80px;
+    margin-bottom: 80px;
+    .edit-profile-email {
+        border: 1px solid $primary-color;
+        margin-bottom: 32px;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        width: 400px;
+    }
+    .edit-profile-first {
+        border: 1px solid $primary-color;
+        margin-bottom: 32px;
+        padding: 8px 16px;
+        box-shadow: $standard-shadow;
+        width: 400px;
+    }
+    .user_bio textarea {
+        margin-bottom: 50px;
+    }
+    .user_instagram  {
+        margin-top: 78px;
+    }
+
+    .form-actions button {
+        width: 240px;
+        border-radius: 0px;
+        border: 1px solid $primary-color;
+        &:hover {
+            background-color: transparent;
+            color: $primary-color;
+        }
+    }
+
+    .profile-edit-img {
+        height: 240px;
+        width: 240px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}

@@ -1,67 +1,96 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<header class="header-banner pt-9 pb-11 d-none d-md-block header-banner-host-event" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)), url(https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80)">
+  <div class="container-md">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="font-weight-bold text-white mb-2">
+          Edit your profile
+        </h1>
+        <p class="font-size-lg text-white-75 mb-0">
+          
+        </p>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+      </div>
+      <div class="col-auto">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%#= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%#= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-
-    <%#= f.label :first_name, "First Name:" %>
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                placeholder: "First Name" %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                placeholder: "Last Name" %>
-    <%= f.input :user_name,
-                autofocus: true,
-                placeholder: "Username" %>
-    <%= f.input :age,
-                autofocus: true,
-                placeholder: "Age" %>
-    <%= f.input :bio,
-                autofocus: true,
-                placeholder: "Tell us something about you" %>
-    <% if current_user.image.attached? %>
-      <p>Current Image:</p>
-      <%= cl_image_tag current_user.image.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <p>Currently no profile image<p>
-    <% end %>
-    <p>Upload local profile image</p>
-    <%= f.file_field :image %>
-    <%= f.input :instagram,
-                autofocus: true,
-                placeholder: "Instagram Link [https://...]" %>
-    <%= f.input :linkedin,
-                autofocus: true,
-                placeholder: "LinkedIn profile [https://...]" %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" },
-                placeholder: "Password" %>
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</header>
+<div class="position-relative">
+  <div class="shape shape-bottom shape-fluid-x svg-shim text-dark mb-4">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :button, "Update", class:"btn-standard" %>
+<div class="edit-profile">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <%= f.input :email, 
+                    required: true, 
+                    autofocus: true,
+                    class: "edit-profile-email" %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "First Name",
+                    class: "edit-profile-first" %>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "Last Name",
+                    class: "edit-profile-last" %>
+        <%= f.input :user_name,
+                    autofocus: true,
+                    placeholder: "Username",
+                    class: "edit-profile-username" %>
+        <%= f.input :age,
+                    autofocus: true,
+                    placeholder: "Age",
+                    class: "edit-profile-age" %>
+      </div>
+      <div class="col-5">
+        <%= f.input :bio,
+                  autofocus: true,
+                  size: "60x20", 
+                  placeholder: "Tell us something about you",
+                  class: "edit-profile-bio" %>
+        <%= f.input :instagram,
+                  autofocus: true,
+                  placeholder: "Instagram Link [https://...]",
+                  class: "edit-profile-insta" %>
+        <%= f.input :linkedin,
+                  autofocus: true,
+                  placeholder: "LinkedIn profile [https://...]",
+                  class: "edit-profile-linked" %>
+      </div>
+    </div>
 
+    <div class="form-inputs">
+      <% if current_user.image.attached? %>
+          <p>Current Image:</p>
+          <%= cl_image_tag current_user.image.key, height: 300, width: 400, crop: :fill, class: "profile-edit-img" %>
+        <% else %>
+          <p>You didn´t upload an image yet<p>
+        <% end %>
+        <br>
+        <br>
+        <%= f.file_field :image %>
+        <br>
+        <br>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" },
+                  placeholder: "Password" %>
+    </div>
 
-  </div>
-<% end %>
-
-<%= link_to "Back", :back, class:"btn-standard" %>
+    <div class="form-actions">
+      <%= f.button :button, "Update", class:"btn-standard" %>
+    </div>
+  <% end %>
+</div>
