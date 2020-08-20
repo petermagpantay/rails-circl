@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
-
 <div class="header">
   <div class="header-text">
     <h1 class="header-landingpage">Find new people for</h1>
@@ -14,8 +12,6 @@
       Match, meet & mingle!
     </p>
   </div>
-
-
   <div class="searchbar-landingpage">
     <%= form_tag events_path, method: :get do %>
       <%= text_field_tag :query,
@@ -26,28 +22,11 @@
     <% end %>
   </div>
 </div>
-<div class="subheader-categories">
+<div class="about-section">
   <div class="row">
-    <div class="col-3">
-      <img src="../../assets/images/heroku.png" alt="">
-    </div>
-    <div class="col-3">
-      <img src="../../assets/images/lewagon-logo-square-fe76916e1b923ade71e253ae6dc031d936e5e8eebac4e26b0fbac650ea6ee360.png" alt="">
-    </div>
-    <div class="col-3">
-      <img src="../../assets/images/Ruby_On_Rails_Logo.svg.png" alt="">
-    </div>
-    <div class="col-3">
-      <img src="../../assets/images/0_vW67MXg6_HQPureN.png" alt="">
-    </div>
-  </div>
-</div>
-
-  <div class="about-section">
-    <div class="row">
-      <div class="col-lg-6" data-aos="zoom-in-up">
-        <p class="title-about">CIRCL helps people to get in touch with like-minded all over the world</p>
-        <p class="subtitle-about">
+    <div class="col-lg-6" data-aos="zoom-in-up">
+      <p class="title-about">CIRCL helps people to get in touch with like-minded all over the world</p>
+      <p class="subtitle-about">
         All over the world, employees have to switch company, city, country or even continent.
         That means you have to find a new apartment, a new favorite restaurant and of course new friends. <br>
         We can´t help you with finding a restaurant, but we can help you to find new friends, so that your new home really feels like home! <br>
@@ -58,83 +37,77 @@
         <% else %>
           <%= link_to "Join our community", new_user_registration_path, class: "btn-standard btn-signup-landing" %>
         <% end %>
-        </p>
-      </div>
-      <div class="col-lg-6" data-aos="zoom-in-up">
-        <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="">
-      </div>
+      </p>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <input type="text" id="about-user" class="about-count-title" disabled>
-        <p class="about-count-description">User</p>
-      </div>
-      <div class="col-4">
-        <input type="text" id="about-events" class="about-count-title" disabled>
-        <p class="about-count-description">Events created</p>
-      </div>
-      <div class="col-4">
-        <input type="text" id="about-friendships" class="about-count-title" disabled>
-        <p class="about-count-description">New friendships</p>
-      </div>
+    <div class="col-lg-6" data-aos="zoom-in-up">
+      <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="">
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-4">
+      <input type="text" id="about-user" class="about-count-title" disabled>
+      <p class="about-count-description">User</p>
+    </div>
+    <div class="col-4">
+      <input type="text" id="about-events" class="about-count-title" disabled>
+      <p class="about-count-description">Events created</p>
+    </div>
+    <div class="col-4">
+      <input type="text" id="about-friendships" class="about-count-title" disabled>
+      <p class="about-count-description">New friendships</p>
+    </div>
+  </div>
+</div>
 <section class="pt-10 pt-md-12 reviews-section bg-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8 text-center">
-          <!-- Heading -->
-          <h2>
-            Our customers are our biggest fans.
-          </h2>
-          <!-- Text -->
-          <p class="font-size-lg text-muted mb-7 mb-md-9">
-            We dont' like to brag, but we don't mind letting our customers do it for us. Here are a few nice things folks have said about our themes over the years.
-          </p>
-        </div>
-      </div> <!-- / .row -->
-
-      <div class="row">
-        <div class="col-12">
-          <!-- Card -->
-          <%# <div class="review-cards" data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'> %>
-            
-            <!-- First Review Card Start -->
-            <div class="review-card card-row">
-              <div class="row no-gutters">
-                <a class="col-12 col-md-6 bg-cover card-img-left" style="background-image: url(https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);">
-
-                  <!-- Shape -->
-                  <%# <div class="shape shape-right shape-fluid-y svg-shim text-white d-none d-md-block">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8 text-center">
+        <!-- Heading -->
+        <h2>
+          Our customers are our biggest fans.
+        </h2>
+        <!-- Text -->
+        <p class="font-size-lg text-muted mb-7 mb-md-9">
+          We dont' like to brag, but we don't mind letting our customers do it for us. Here are a few nice things folks have said about our themes over the years.
+        </p>
+      </div>
+    </div>
+     <!-- / .row -->
+    <div class="row">
+      <div class="col-12">
+        <!-- Card -->
+        <%# <div class="review-cards" data-flickity='{"pageDots": false,"cellAlign": "left", "wrapAround": true, "imagesLoaded": true}'> %>
+        <!-- First Review Card Start -->
+        <div class="review-card card-row">
+          <div class="row no-gutters">
+            <a class="col-12 col-md-6 bg-cover card-img-left" style="background-image: url(https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);">
+              <!-- Shape -->
+              <%# <div class="shape shape-right shape-fluid-y svg-shim text-white d-none d-md-block">
                     @@include("../assets/img/shapes/curves/curve-4.svg")
                   </div> %>
-                </a>
-
-                <div class="col-12 col-md-6 order-md-1">
-                  <!-- Body -->
-                  <div class="card-body">
-                    <blockquote class="blockquote mb-0 text-center">
-                      <!-- Text -->
-                      <p class="mb-5 mb-md-7 p-body">
-                        “Thanks to Circl I dont sit around all weekend and watch netflix, I now know that there is always an awesome event that is happy to invite me, which is an awesome experience for everybody!”
-                      </p>
-                      <!-- Footer -->
-                      <footer class="blockquote-footer">
-                        <span class="h6 text-uppercase">William Callan</span>
-                      </footer>
-                    </blockquote>
-                  </div>
-
-                </div>
-
+            </a>
+            <div class="col-12 col-md-6 order-md-1">
+              <!-- Body -->
+              <div class="card-body">
+                <blockquote class="blockquote mb-0 text-center">
+                  <!-- Text -->
+                  <p class="mb-5 mb-md-7 p-body">
+                    “Thanks to Circl I dont sit around all weekend and watch netflix, I now know that there is always an awesome event that is happy to invite me, which is an awesome experience for everybody!”
+                  </p>
+                  <!-- Footer -->
+                  <footer class="blockquote-footer">
+                    <span class="h6 text-uppercase">William Callan</span>
+                  </footer>
+                </blockquote>
               </div>
-            </div> 
-            <!-- First Review Card End -->
-
-          <%# </div> %>
+            </div>
+          </div>
         </div>
-
-      </div> <!-- / .row -->
-    </div> <!-- / .container -->
-  </section>
+        <!-- First Review Card End -->
+        <%# </div> %>
+      </div>
+    </div>
+     <!-- / .row -->
+  </div>
+   <!-- / .container -->
+</section>
