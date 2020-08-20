@@ -31,13 +31,13 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  # def after_sign_in_path_for(resource)
-  #   redirect = stored_location_for(resource)
-  #   return redirect if redirect.present?
-  # end
+  #def after_sign_in_path_for(resource)
+  #  redirect = stored_location_for(resource)
+  #  return redirect if redirect.present?
+  #end
 
-  # def after_update_path_for(resource)
-  #   raise
-  # end
+  #def after_update_path_for(resource)
+  #  raise
+  #end
 
 end
