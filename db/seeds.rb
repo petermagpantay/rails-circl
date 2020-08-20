@@ -1,13 +1,15 @@
 require "open-uri"
 require "faker"
-# =========================================================
+
 puts "Cleaning Request database..."
 Request.destroy_all
 puts "Cleaning Event database..."
 Event.destroy_all
 puts "Cleaning User database..."
 User.destroy_all
-# =========================================================
+puts "Destrying all categories"
+Category.destroy_all
+
 puts "Creating Users"
 
 user = User.new(first_name: "Peter", last_name: "Heung-min", age: 28, user_name: "Sonny", bio: "New in Munich.", email: "peter@circl.com", password: "123456", instagram: "https://www.instagram.com/cristiano/?hl=de", linkedin: "https://www.linkedin.com/in/williamhgates")
@@ -35,7 +37,7 @@ user.save
 puts "Felipe created"
 puts "Users seeded!"
 
-# =========================================================
+
 titles = ["BBQ at Isar", "Watching CL final", "Beers after work", "Swimming at Starnberger See",
           "Bachata Dancing classes", "Theatre", "Sailing at Tegernsee", "Yoga at Westpark", "Clubbing",
           "Tabletennis tournament", "Weekendtrip to Gardasee", "Cinema", "Chilling at a Lake"]
@@ -108,7 +110,9 @@ puts "Seeding events..."
   )
   photo = URI.open(images[i - 1])
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
+
   event.categories = Category.all[rand(1..4), rand(5..7)]
+
   event.save
   puts "#{i + 1}th Event created..."
 
