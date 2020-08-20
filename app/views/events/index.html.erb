@@ -42,8 +42,8 @@
             <div class="row grid" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
                 <% @events.each do |event| %>
                     <% tag = event.categories.map{|category| category.name}.join(" ") %>
-                    <div class="element-item col-lg-6 <%=tag%>">
-
+                    <div class="element-item col-lg-6 <%= tag %>">
+                        <%= tag %>
                         <div class="card card-index" style="width: 18rem;">
                             <div class="card-body card-body-index">
                                 <% if event.photo.attached?  %>

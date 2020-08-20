@@ -7,6 +7,8 @@ puts "Cleaning Event database..."
 Event.destroy_all
 puts "Cleaning User database..."
 User.destroy_all
+puts "Destrying all categories"
+Category.destroy_all
 # =========================================================
 puts "Creating Users"
 
@@ -44,9 +46,9 @@ descriptions = ["This is a normal description for now, Vincent will work on more
 
 locations = ["Großhesseloher Brücke at Isar", "Dorfstraße 2a, Straßlach", "Ottostraße 13, Munich", "Starnberger See", "Spervogelstraße 11, Munich",
              "Kaufingerstraße 12, Munich", "Tegernsee", "Westpark", "Holbeinstraße 46, Munich",
-             "Geiselgasteigstraße 88, Munich", "Gardasee", "Leopoldstraße, Munich", 
+             "Geiselgasteigstraße 88, Munich", "Gardasee", "Leopoldstraße, Munich",
              "Markgrafenstraße 38, Berlin"]
-             
+
 images = ["https://res.cloudinary.com/dgnfxdfou/image/upload/v1597853657/Isar-Nord-c-M_C3_BCnchentv_bivqz8.jpg",
           "https://res.cloudinary.com/dgnfxdfou/image/upload/v1597853798/4706001_bjauj8.jpg",
           "https://res.cloudinary.com/dr9hgxsps/image/upload/v1597657237/munich_wiesn_hiwwws.jpg",

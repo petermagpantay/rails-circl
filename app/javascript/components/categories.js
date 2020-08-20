@@ -10,6 +10,7 @@ const initTags = () => {
     const iso = new Isotope( grid, {
       itemSelector: '.element-item'
     });
+
     console.log(iso)
 
     const filterFns = {
@@ -31,7 +32,7 @@ const initTags = () => {
       //   return;
       // }
 
-      const filterValue = event.target.parentElement.getAttribute('data-filter');
+      let filterValue = event.target.parentElement.getAttribute('data-filter');
       // use matching filter function
       console.log(filterValue)
       filterValue = filterFns[ filterValue ] || filterValue;
