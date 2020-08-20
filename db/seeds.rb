@@ -97,7 +97,7 @@ puts "Seeding events..."
   event = Event.new(
     user: User.all[user_ids[i]],
     title: titles[i - 1],
-    description: descriptions[0],
+    description: descriptions[i-1],
     location: locations[i - 1],
     #categories: Category.all[5,6],
     categories: Category.all[category_ids[i-1][0],category_ids[i-1][1]],
