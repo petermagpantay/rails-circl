@@ -1,11 +1,12 @@
 .navbar-circl {
   justify-content: space-between;
-  background: white;
+  background: transparent;
   position: fixed !important;
   z-index: 1000;
   width: 100%;
   padding-left: 80px;
   padding-right: 80px;
+  transition: 0.5s background-color ease;
 }
 
 .navbar-circl .navbar-collapse {
@@ -13,8 +14,10 @@
 }
 
 
-// .fixed-content {
-//   position:fixed;
-//   overflow-y:scroll;
-//   overflow-x:hidden;
-// }
+.navbar-circl-white{
+  background-color: white;
+  a{
+    color: black !important;
+  }
+}
+

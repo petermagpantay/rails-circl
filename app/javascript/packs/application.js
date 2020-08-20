@@ -35,6 +35,7 @@ import { loadDynamicBannerText } from '../components/banner';
 import { initCounter } from '../plugins/init_counter';
 import { initComment } from '../components/comment';
 import { initTags } from '../components/categories';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -44,6 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   initAutobiz();
   initCounter();
   initComment();
+  initUpdateNavbarOnScroll();
   // initTags();
 });
 
