@@ -101,23 +101,33 @@
 
 
 // SECTION 3 - REVIEWS
-.review-cards {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background: white;
-  overflow: hidden;
-  img {
-      height: 100%;
-      width: 300px;
-      object-fit: cover;
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  min-height: 1px;
+  .p-body {
+    display: block;
+    padding-top: 64px;
   }
-  h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
+  .h6 {
+    line-height: 1.55;
+    margin-bottom: .5rem;
+    font-weight: 400;
   }
 }
 
+.card-img-left {
+  width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 350px;
+    border-radius: 0px 200px 200px 0px;
+    box-shadow: 0px 0px 10px rgba(145, 145, 145, 0.808);
+}
 
+.bg-cover {
+  background: no-repeat center center/cover;
+}
 
 /*! Flickity v2.2.1
 https://flickity.metafizzy.co
