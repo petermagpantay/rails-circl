@@ -88,6 +88,7 @@ puts "Seeding events..."
   )
   photo = URI.open(images[i - 1])
   event.photo.attach(io: photo, filename: "event-card-image", content_type: "image/jpg")
+
   event.save
   puts "#{i + 1}th Event created..."
 end
