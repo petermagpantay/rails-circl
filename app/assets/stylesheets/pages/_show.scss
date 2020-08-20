@@ -113,11 +113,11 @@
     margin-bottom: 57px;
     height: 300px;
   }
-  
+
   .comments-card-items {
     margin: auto;
   }
-  
+
   .comment-img-user{
     border-radius: 50%;
     width: 72px;
@@ -133,9 +133,17 @@
       margin-bottom: 0px;
     }
   }
-  
+
   .comment-date {
     padding-top: -20px;
     padding-bottom: 16px;
     font-size: 14px;
+  }
+
+  #comment-event{
+    border: none;
+    box-shadow: 0 1.5rem 4rem rgba(22,28,45,.1)!important;
+    border-radius: 10px;
+    margin-left: 5px;
+    height: 100%;
   }
