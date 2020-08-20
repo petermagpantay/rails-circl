@@ -44,9 +44,9 @@ document.addEventListener('turbolinks:load', () => {
   initAutobiz();
   initCounter();
   initComment();
-  initTags();
+  // initTags();
 });
 
 document.addEventListener('turbolinks:load', () => {
-  loadDynamicBannerText();
+  // loadDynamicBannerText();
 });

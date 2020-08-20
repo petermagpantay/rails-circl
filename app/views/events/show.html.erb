@@ -1,124 +1,196 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 
-<div class="header-show-infos">
-  <div class="header-show-img">
-    <% if @event.photo.attached?  %>
-      <%= cl_image_tag @event.photo.key, class: "card-img-show" %>
-    <% else %>
-      <img class="card-img-show" src="https://source.unsplash.com/PGnqT0rXWLs" alt="">
-    <% end %>
-  </div>
-  <div class="header-show-event-title">
-    <p class="show-header"><%= @event.title %></p>
-  </div>
-  <div class="row justify-content-center show-date-location">
-    <div class="col-3">
-      <p class="date-show"><i class="far fa-calendar-alt fa-1x"></i> <%= @event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></p>
-    </div>
-    <div class="col-3">
-      <p class="location-show"><i class="fas fa-map-marker-alt fa-1x"></i> <%= @event.location %></p>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-2">
-      <%= link_to "Back to all events", events_path, class: "btn-standard btn-show" %>
-    </div>
-    <div class="col-2">
-      <% if current_user == @event.user %>
-        <%= link_to "Edit Event", edit_event_path(@event), class: "btn-standard btn-show2" %>
-      <% else %>
-        <% if @request_done %>
-          <span class="btn-show-request-status" disabled>
-            <%= @request_done.status %>
-          </span>
-        <% else %>
-          <%= link_to "Ask to join", event_requests_path(@event), method: :post, class: "btn-standard btn-show2" %>
-        <% end %>
-      <% end %>
-      <% if @accepted.empty? %>
-        <p></p>
-      <% else %>
-        <% @accepted.each do |user| %>
-          <% if user.image.attached?  %>
-            <%= cl_image_tag user.image.key, class: "show-img-participant" %>
-          <% else %>
-            <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<% if @event.photo.attached?  %>
+  <% image = cl_image_path @event.photo.key %>
+<% else %>
+   <% image = "https://source.unsplash.com/PGnqT0rXWLs" %>
+<% end %>
 
-</div>
-<div class="row show-section-both-col">
-  <div class="col-4">
-    <div class="show-infos-left">
-      <% if @event.user.image.attached?  %>
-        <%= cl_image_tag @event.user.image.key, class: "show-img-host" %>
-      <% else %>
-        <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-      <% end %>
-      <% if @accepted.empty? %>
-        <p></p>
-      <% else %>
-        <% @accepted.each do |user| %>
-          <% if user.image.attached?  %>
-            <%= cl_image_tag user.image.key, class: "show-img-participant" %>
-          <% else %>
-            <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt="">
-          <% end %>
-        <% end %>
-      <% end %>
-      <div class="">
-        <p class="desc-show"><%= @event.description %></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="show-infos-right">
-      <div class="map-style-show">
-        <div id="map"
-              style="width:100%; height: 600px;"
-              data-markers="<%= @marker.to_json %>"
-              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<header class="header-banner pt-9 pb-11 d-none d-md-block" style="background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0)), url(<%= image %>) ">
+
+  <div class="container-md">
+    <div class="row align-items-center">
+      <div class="col">
+
+        <!-- Heading -->
+        <h1 class="font-weight-bold text-white mb-2 pl-0">
+          <%= @event.title %>
+        </h1>
+
+        <!-- Text -->
+        <div class="row rounded align-items-center justify-content-center show-date-location ml-0 p-2 mr-5" style="color: white; background: rgb(255 255 255 / 0.3);">
+          <div class="col-6 align-items-center">
+            <p class="date-show mb-0"><i class="far fa-calendar-alt fa-1x mr-2" style="color: #39c6d9;"></i> <%= @event.event_date.strftime("%-d %B %Y, %-l:%M%p") %></p>
+          </div>
+          <div class="col-6 align-items-center">
+            <p class="location-show mb-0"><i class="fas fa-map-marker-alt fa-1x mr-2" style="color: #39c6d9;"></i> <%= @event.location %></p>
+          </div>
         </div>
+
       </div>
-    </div>
+      <div class="col-auto" style="margin-top: 4rem;">
+
+        <!-- Button -->
+        <div>
+          <%= link_to "Back to all events", events_path, class: "btn btn-secondary p-2" %>
+
+
+          <% if current_user == @event.user %>
+            <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-info p-2 ml-4" %>
+          <% else %>
+            <% if @request_done %>
+              <span class="btn btn-info p-2 ml-4" disabled>
+                <%= @request_done.status %>
+              </span>
+            <% else %>
+              <%= link_to "Ask to join", event_requests_path(@event), method: :post, class: "btn btn-success p-2 ml-4" %>
+            <% end %>
+          <% end %>
+
+          <%# unless @accepted.empty? %>
+            <%# @accepted.each do |user| %>
+              <%# if user.image.attached?  %>
+                <%#= cl_image_tag user.image.key, class: "show-img-participant" %>
+              <%# else %>
+                <!-- <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" alt=""> -->
+              <%# end %>
+            <%# end %>
+          <%# end %>
+
+          <%#= link_to "Ask to join", event_requests_path(@event), method: :post, class: "btn btn-success p-2 ml-4" %>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</header>
+
+<div class="position-relative">
+  <div class="shape shape-bottom shape-fluid-x svg-shim text-dark">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"></path></svg>
   </div>
 </div>
 
-<section class="comments-section">
-  <p class="comment-event-header">Questions about the event?</p>
-  <% @event.comments.each do |comment| %>
-    <div class="row justify-content-center mb-4">
-      <div class="col-1">
-        <div class="comment-user-img">
-          <% if comment.user.image.attached? %>
-            <%= cl_image_tag comment.user.image.key, class:"comment-img-user" %>
-          <% else %>
-            <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="comment-img-user" />
-          <% end %>
+
+<main class="pb-8 pb-md-11 mt-md-n6">
+  <div class="container-md">
+    <div class="row justify-content-between">
+
+
+      <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div class="lcard-body">
+              <h6 class="text-muted mb-4">
+                Your Host
+              </h6>
+              <div class='d-flex align-items-center'>
+                <% if  @event.user.image.attached? %>
+                  <%= cl_image_tag @event.user.image.key, class: "avatar avatar-sm" %>
+                <% else %>
+                  <img class="show-img-participant" src="https://image.flaticon.com/icons/svg/206/206853.svg" style="width: 20%;">
+                <% end %>
+                <h4 class="ml-4"><%= @event.user.user_name %></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div class="lcard-body">
+              <h6 class="text-muted mb-4">
+                Attendence
+              </h6>
+              <h5><%= pluralize(@accepted.size, 'person') %></h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div class="lcard-body">
+              <h6 class="text-muted mb-4">
+                Description
+              </h6>
+              <h5 class='text-dark'>
+                <%= @event.description %>
+              </h5>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-8 comments-padding">
-        <div class="comments-card-text">
-          <p><b><%= comment.user.first_name %>: </b><%= comment.content %></p>
-          <p class="text-muted comment-date"><small><%= comment.created_at.strftime("%A, %b %d") %></small></p>
+
+
+      <div class="col-12 col-md-6">
+        <div class="lcard card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div id="map"
+                style="width:100%; height: 700px;"
+                data-markers="<%= @marker.to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  <% end %>
+
+  </div>
+</main>
+
+
+<section class="pb-8 pb-md-11 bg-dark" style='padding-top: 6rem;'>
+  <div class="container-md">
+    <div class="row flex-column justify-content-between align-items-center">
+      <h2 class="comment-event-header mb-4" style="font-size: 3rem; color: white;">Questions about the event?</h2>
+      <div class="col-12">
+        <div class="lcard p-4 mb-0 card-bleed border-bottom border-bottom-md-0 shadow-light-lg">
+          <div class="collapse d-md-block">
+            <div>
+              <h6 class="text-muted">Ask your question here</h6>
+              <%= simple_form_for [@event, @comment] do |f| %>
+                <div class="row">
+                  <div class="col-6">
+                    <%= f.text_area :content, size: "60x2", class: "border-none", id:"comment-event" %>
+                  </div>
+                  <div class="col-2 ml-4">
+                    <%= f.submit "Ask your question", class: 'btn-standard rounded', id:"comment-btn" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <% if @event.comments.empty? %>
+              <div class="row justify-content-center mt-4 mb-4">
+                  <div class="col-12">
+                    <h4>Be the first to be curious about this event 🤘</h4>
+                  </div>
+                </div>
+            <% else %>
+              <% @event.comments.each do |comment| %>
+                <div class="row justify-content-center mb-4">
+                  <div class="col-1">
+                    <div class="comment-user-img">
+                      <% if comment.user.image.attached? %>
+                        <%= cl_image_tag comment.user.image.key, class:"comment-img-user" %>
+                      <% else %>
+                        <img src="https://image.flaticon.com/icons/svg/206/206853.svg" class="comment-img-user" />
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-8 comments-padding">
+                    <div class="comments-card-text">
+                      <p><b><%= comment.user.first_name %>: </b><%= comment.content %></p>
+                      <p class="text-muted comment-date"><small><%= comment.created_at.strftime("%A, %b %d") %></small></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="comments-form-section">
-  <%= simple_form_for [@event, @comment] do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <%= f.text_area :content, size: "60x2", class:"comment-content", id:"comment-event" %>
-      </div>
-      <div class="col-2">
-        <%= f.submit class: 'btn-standard', id:"comment-btn" %>
-      </div>
-    </div>
-  <% end %>
-</section>
